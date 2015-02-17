@@ -1,0 +1,22 @@
+{
+  "authors": [
+    {
+      "homepage": "http://www.perfectsensedigital.com/",
+      "name": "Perfect Sense Digital"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0",
+    "bsp-utils": ">=1.0.0",
+    "slick-carousel": "1.4.1"
+  },
+  "homepage": "https://github.com/perfectsense/brightspot-js-carousel",
+  "keywords": [
+    "brightspot",
+    "jquery"
+  ],
+  "license": "MIT",
+  "main": "bsp-carousel.js",
+  "name": "bsp-carousel",
+  "version": "1.0.0"
+}

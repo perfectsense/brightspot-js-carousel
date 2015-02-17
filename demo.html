@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/slick-carousel/slick/slick.js"></script>
+		<script src="bower_components/bsp-utils/bsp-utils.js"></script>
+		<script src="bsp-carousel.js"></script>
+		<script>if (!window.$) { alert("jquery not found, did you run 'bower install'?"); }</script>
+
+		<link rel="stylesheet" type="text/css" href="bower_components/slick-carousel/slick/slick.css" />
+		<style type="text/css">
+		body {
+			font-family: sans-serif;
+			padding-bottom: 50px;
+		}
+
+		/** demo shared styles */
+		.demo {
+			margin: 0 auto;
+			width: 75%;
+		}
+		
+		/** demo 1 styles */
+		.demo1 div {
+			height: 100px;
+		}
+		.demo1 div:nth-child(even) {
+			background: orange;
+		}
+		.demo1 div:nth-child(odd) {
+			background: yellow;
+		}
+
+		/** demo 2 styles */
+		.demo2 div {
+			height: 100px;
+		}
+		.demo2 div:nth-child(even) {
+			background: orange;
+		}
+		.demo2 div:nth-child(odd) {
+			background: yellow;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Brightspot Carousel Demo</h1>
+		<p>For now just provides a front end to slick carousel. For demos of all slick capabilities, visit <a href="http://kenwheeler.github.io/slick/">the slick homepage</a>.</p>
+
+		<section>
+			<h2>Demo 1</h2>
+
+			<p>Minimal carousel with no options</p>
+
+			<div class="demo demo1" data-bsp-carousel>
+				<div>slide 1</div>
+				<div>slide 2</div>
+				<div>slide 3</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>Demo 2</h2>
+
+			<p>Carousel which overrides some options through a data attribute</p>
+
+			<div class="demo demo2" data-bsp-carousel data-bsp-carousel-options='{ "slidesToShow": 3, "slidesToScroll": 1 }'>
+				<div>slide 1</div>
+				<div>slide 2</div>
+				<div>slide 3</div>
+				<div>slide 4</div>
+				<div>slide 5</div>
+				<div>slide 6</div>
+			</div>
+		</section>
+
+	</body>
+</html>
