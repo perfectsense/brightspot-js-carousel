@@ -3,27 +3,27 @@
         define([ 'jquery', 'slick' ], factory);
 
     } else {
-        globals.bsp_carousel_util = factory(globals.jQuery, globals.jQuery.fn.slick);
+        globals.bsp_carousel = factory(globals.jQuery, globals.jQuery.fn.slick);
     }
 
 })(this, function($) {
-	var bsp_carousel_util = {};
+	var bsp_carousel = {};
 
 	(function() {
-		bsp_carousel_util.init = function($el, options) {
+		bsp_carousel.init = function($el, options) {
 			this.$el = $el;
 			this.addEvents();
 			$el.slick(options);
-			$el.data('bsp_carousel_util', this);
+			$el.data('bsp_carousel', this);
 		};
 
 		/** bind events to element */
-		bsp_carousel_util.bind = function(event, callback) {
+		bsp_carousel.bind = function(event, callback) {
 			this.$el.on(event, callback);
 		};
 
 		/** trigger events, always pass self as first arg of callback followed by other args */
-		bsp_carousel_util.trigger = function() {
+		bsp_carousel.trigger = function() {
 			var args = $.makeArray(arguments);
 			var event = args.shift();
 			args.unshift(event, this);
@@ -31,7 +31,7 @@
 		};
 
 		/** slick event abstractions */
-		bsp_carousel_util.addEvents = function() {
+		bsp_carousel.addEvents = function() {
 			var self = this;
 			this.bind('afterChange', function(slick, currentSlide) {
 				self.trigger('carousel:afterChange', currentSlide);
@@ -57,46 +57,46 @@
 		};
 
 		/** slick method abstractions */
-		bsp_carousel_util.currentSlide = function() {
+		bsp_carousel.currentSlide = function() {
 			return this.$el.slick('slickCurrentSlide');
 		};
-		bsp_carousel_util.goTo = function(i) {
+		bsp_carousel.goTo = function(i) {
 			this.$el.slick('slickGoTo', i);
 		};
-		bsp_carousel_util.next = function() {
+		bsp_carousel.next = function() {
 			this.$el.slick('slickNext');
 		};
-		bsp_carousel_util.prev = function() {
+		bsp_carousel.prev = function() {
 			this.$el.slick('slickPrev');
 		};
-		bsp_carousel_util.pause = function() {
+		bsp_carousel.pause = function() {
 			this.$el.slick('slickPause');
 		};
-		bsp_carousel_util.play = function() {
+		bsp_carousel.play = function() {
 			this.$el.slick('slickPlay');
 		};
-		bsp_carousel_util.add = function(ele, index, addBefore) {
+		bsp_carousel.add = function(ele, index, addBefore) {
 			this.$el.slick('slickAdd', ele, index, addBefore);
 		};
-		bsp_carousel_util.remove = function(index, removeBefore) {
+		bsp_carousel.remove = function(index, removeBefore) {
 			this.$el.slick('slickRemove', index, removeBefore);
 		};
-		bsp_carousel_util.filter = function(selectorOrFunction) {
+		bsp_carousel.filter = function(selectorOrFunction) {
 			this.$el.slick('slickFilter', selectorOrFunction);
 		};
-		bsp_carousel_util.unfilter = function(i) {
+		bsp_carousel.unfilter = function(i) {
 			this.$el.slick('slickUnfilter', i);
 		};
-		bsp_carousel_util.getOption = function(option) {
+		bsp_carousel.getOption = function(option) {
 			return this.$el.slick('slickGetOption', option);
 		};
-		bsp_carousel_util.setOption = function(option) {
+		bsp_carousel.setOption = function(option) {
 			this.$el.slick('slickSetOption', option);
 		};
-		bsp_carousel_util.destroy = function() {
+		bsp_carousel.destroy = function() {
 			this.$el.slick('unslick');
 		};
 	})();
 
-	return bsp_carousel_util;
+	return bsp_carousel;
 });

@@ -5,7 +5,7 @@
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/slick-carousel/slick/slick.js"></script>
 		<script src="bower_components/bsp-utils/bsp-utils.js"></script>
-		<script src="bsp-carousel-util.js"></script>
+		<script src="bsp-carousel.js"></script>
 		<script src="bsp-carousel-plugin.js"></script>
 		<script>if (!window.$) { alert("jquery not found, did you run 'bower install'?"); }</script>
 
@@ -58,7 +58,7 @@
 	</head>
 	<body>
 		<h1>Brightspot Carousel Demo</h1>
-		<p>For now just provides a front end to slick carousel. For demos of all slick capabilities, visit <a href="http://kenwheeler.github.io/slick/">the slick homepage</a>.</p>
+		<p>Plugin and utility provides a front end to slick carousel. For demos of all slick capabilities, visit <a href="http://kenwheeler.github.io/slick/">the slick homepage</a>.</p>
 
 		<section>
 			<h2>Demo 1</h2>
@@ -108,7 +108,7 @@
 
 			<script>
 			$(function() {
-				/** carousel:init is an abstraction of slick's init event */
+				/** carousel:init is an abstraction of slick's init event */ 
 				$('.demo3').on('carousel:init', function(e, carousel) {
 					$('#demo3prev').on('click', function(e) {
 						carousel.prev();

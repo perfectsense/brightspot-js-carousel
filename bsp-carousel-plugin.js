@@ -3,17 +3,17 @@
     "use strict";
 
     if (typeof define === 'function' && define.amd) {
-        define(['jquery','bsp-utils','bsp-carousel-util'], factory);
+        define(['jquery','bsp-utils','bsp-carousel'], factory);
 
     } else {
-        factory(globals.jQuery, globals.bsp_utils, globals.bsp_carousel_util, globals);
+        factory(globals.jQuery, globals.bsp_utils, globals.bsp_carousel, globals);
     }
 
-})(this, function($, bsp_utils, bsp_carousel_util, globals) {
+})(this, function($, bsp_utils, bsp_carousel, globals) {
 
 	var module = {
 		init: function($el, options) {
-			bsp_carousel_util.init($el, options);
+			bsp_carousel.init($el, options);
 		}
 	};
 
