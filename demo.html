@@ -5,7 +5,8 @@
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/slick-carousel/slick/slick.js"></script>
 		<script src="bower_components/bsp-utils/bsp-utils.js"></script>
-		<script src="bsp-carousel.js"></script>
+		<script src="bsp-carousel-util.js"></script>
+		<script src="bsp-carousel-plugin.js"></script>
 		<script>if (!window.$) { alert("jquery not found, did you run 'bower install'?"); }</script>
 
 		<link rel="stylesheet" type="text/css" href="bower_components/slick-carousel/slick/slick.css" />
@@ -42,6 +43,17 @@
 		.demo2 div:nth-child(odd) {
 			background: yellow;
 		}
+
+		/** demo 2 styles */
+		.demo3 div {
+			height: 100px;
+		}
+		.demo3 div:nth-child(even) {
+			background: orange;
+		}
+		.demo3 div:nth-child(odd) {
+			background: yellow;
+		}
 		</style>
 	</head>
 	<body>
@@ -57,6 +69,9 @@
 				<div>slide 1</div>
 				<div>slide 2</div>
 				<div>slide 3</div>
+				<div>slide 4</div>
+				<div>slide 5</div>
+				<div>slide 6</div>
 			</div>
 		</section>
 
@@ -73,6 +88,39 @@
 				<div>slide 5</div>
 				<div>slide 6</div>
 			</div>
+		</section>
+
+		<section>
+			<h2>Demo 3</h2>
+
+			<p>Carousel with custom navigation (demonstrates event and method abstractions)</p>
+
+			<div class="demo demo3" data-bsp-carousel data-bsp-carousel-options='{ "arrows": false }'>
+				<div>slide 1</div>
+				<div>slide 2</div>
+				<div>slide 3</div>
+				<div>slide 4</div>
+				<div>slide 5</div>
+				<div>slide 6</div>
+			</div>
+
+			<div><a href="" id="demo3prev">Custom Prev</a> | <a href="" id="demo3next">Custom Next</a></div>
+
+			<script>
+			$(function() {
+				/** carousel:init is an abstraction of slick's init event */
+				$('.demo3').on('carousel:init', function(e, carousel) {
+					$('#demo3prev').on('click', function(e) {
+						carousel.prev();
+						e.preventDefault();
+					});
+					$('#demo3next').on('click', function(e) {
+						carousel.next();
+						e.preventDefault();
+					});
+				});
+			});
+			</script>
 		</section>
 
 	</body>
