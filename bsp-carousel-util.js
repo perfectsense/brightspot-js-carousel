@@ -22,29 +22,37 @@
 			this.$el.on(event, callback);
 		};
 
+		/** trigger events, always pass self as first arg of callback followed by other args */
+		bsp_carousel_util.trigger = function() {
+			var args = $.makeArray(arguments);
+			var event = args.shift();
+			args.unshift(event, this);
+			this.$el.trigger.apply(this.$el, args);
+		};
+
 		/** slick event abstractions */
 		bsp_carousel_util.addEvents = function() {
 			var self = this;
 			this.bind('afterChange', function(slick, currentSlide) {
-				self.$el.trigger('carousel:afterChange', self, currentSlide);
+				self.trigger('carousel:afterChange', currentSlide);
 			});
 			this.bind('beforeChange', function(slick, currentSlide, nextSlide) {
-				self.$el.trigger('carousel:beforeChange', self, currentSlide, nextSlide);
+				self.trigger('carousel:beforeChange', currentSlide, nextSlide);
 			});
 			this.bind('edge', function(slick, direction) {
-				self.$el.trigger('carousel:edge', self, direction);
+				self.trigger('carousel:edge', direction);
 			});
 			this.bind('init', function() {
-				self.$el.trigger('carousel:init', self);
+				self.trigger('carousel:init');
 			});
 			this.bind('reinit', function() {
-				self.$el.trigger('carousel:reinit', self);
+				self.$el.trigger('carousel:reinit');
 			});
 			this.bind('setPosition', function() {
-				self.$el.trigger('carousel:setPosition', self);
+				self.$el.trigger('carousel:setPosition');
 			});
 			this.bind('swipe', function(slick, direction) {
-				self.$el.trigger('carousel:swipe', self, direction);
+				self.$el.trigger('carousel:swipe', direction);
 			});
 		};
 
