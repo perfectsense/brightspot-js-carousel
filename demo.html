@@ -13,47 +13,17 @@
 		<style type="text/css">
 		body {
 			font-family: sans-serif;
-			padding-bottom: 50px;
+			padding: 0 20px 50px 20px;
 		}
-
-		/** demo shared styles */
-		.demo {
-			margin: 0 auto;
-			width: 75%;
-		}
-		
-		/** demo 1 styles */
-		.demo1 div {
+		.demo div {
 			height: 100px;
 		}
-		.demo1 div:nth-child(even) {
+		.demo div:nth-child(even) {
 			background: orange;
 		}
-		.demo1 div:nth-child(odd) {
+		.demo div:nth-child(odd) {
 			background: yellow;
-		}
-
-		/** demo 2 styles */
-		.demo2 div {
-			height: 100px;
-		}
-		.demo2 div:nth-child(even) {
-			background: orange;
-		}
-		.demo2 div:nth-child(odd) {
-			background: yellow;
-		}
-
-		/** demo 2 styles */
-		.demo3 div {
-			height: 100px;
-		}
-		.demo3 div:nth-child(even) {
-			background: orange;
-		}
-		.demo3 div:nth-child(odd) {
-			background: yellow;
-		}
+		}		
 		</style>
 	</head>
 	<body>
@@ -63,9 +33,9 @@
 		<section>
 			<h2>Demo 1</h2>
 
-			<p>Minimal carousel with no options</p>
+			<p>Minimal carousel with default theme</p>
 
-			<div class="demo demo1" data-bsp-carousel>
+			<div class="demo" data-bsp-carousel>
 				<div>slide 1</div>
 				<div>slide 2</div>
 				<div>slide 3</div>
@@ -78,9 +48,9 @@
 		<section>
 			<h2>Demo 2</h2>
 
-			<p>Carousel which overrides some options through a data attribute</p>
+			<p>Carousel which selects a pre-packaged theme</p>
 
-			<div class="demo demo2" data-bsp-carousel data-bsp-carousel-options='{ "slidesToShow": 3, "slidesToScroll": 1 }'>
+			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "stage-carousel-dots" }'>
 				<div>slide 1</div>
 				<div>slide 2</div>
 				<div>slide 3</div>
@@ -90,6 +60,7 @@
 			</div>
 		</section>
 
+		<!--
 		<section>
 			<h2>Demo 3</h2>
 
@@ -122,6 +93,6 @@
 			});
 			</script>
 		</section>
-
+		-->
 	</body>
 </html>

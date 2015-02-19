@@ -10,11 +10,31 @@
 	var bsp_carousel = {};
 
 	(function() {
+		bsp_carousel.themes = {
+			'stage-carousel-dots': {
+				dots: true,
+				nextArrow: '<button type="button" class="slick-prev">&gt;</button>',
+				prevArrow: '<button type="button" class="slick-next">&lt;</button>'
+			}
+		};
+
 		bsp_carousel.init = function($el, options) {
+			options = this.mergeOptions(options);
 			this.$el = $el;
 			this.addEvents();
 			$el.slick(options);
 			$el.data('bsp_carousel', this);
+		};
+
+		bsp_carousel.mergeOptions = function(options) {
+			var merged = {};
+			if (options.theme) {
+				merged = this.themes[options.theme];
+			}
+			if (options.themeConfig) {
+				merged = $.extend({}, merged, options.themeConfig);
+			}
+			return merged;
 		};
 
 		/** bind events to element */
