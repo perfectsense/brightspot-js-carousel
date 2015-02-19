@@ -1,0 +1,25 @@
+// variables
+@demo-assets-path: "/assets";
+@demo-bower-path: "@{demo-assets-path}/bower_components";
+
+// slick carousel
+@import (inline) "@{demo-bower-path}/slick-carousel/slick/slick.css";
+
+// bsp carousel
+@import "@{demo-assets-path}/bsp-carousel.less";
+
+// demo styles
+body {
+	font-family: sans-serif;
+	padding: 0px 20px 50px 20px;
+}
+.slide {
+	height: 100px;
+
+	&:nth-child(even) {
+		background: orange;
+	}
+	&:nth-child(odd) {
+		background: yellow;
+	}
+}

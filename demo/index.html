@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="/assets/bower_components/slick-carousel/slick/slick.css" />
-		<link rel="stylesheet/less" type="text/css" href="/assets/bsp-carousel.less" />
+		<link rel="stylesheet/less" type="text/css" href="/demo.less" />
 		<script src="/assets/bower_components/less/dist/less.js"></script>
 		<script src="/assets/bower_components/jquery/dist/jquery.js"></script>
 		<script src="/assets/bower_components/slick-carousel/slick/slick.js"></script>
@@ -10,22 +9,6 @@
 		<script src="/assets/bsp-carousel.js"></script>
 		<script src="/assets/bsp-carousel-plugin.js"></script>
 		<script>if (!window.$) { alert("jquery not found, did you run 'bower install'?"); }</script>
-
-		<style type="text/css">
-		body {
-			font-family: sans-serif;
-			padding: 0 20px 50px 20px;
-		}
-		.demo div {
-			height: 100px;
-		}
-		.demo div:nth-child(even) {
-			background: orange;
-		}
-		.demo div:nth-child(odd) {
-			background: yellow;
-		}		
-		</style>
 	</head>
 	<body>
 		<h1>Brightspot Carousel Demo</h1>
@@ -34,66 +17,32 @@
 		<section>
 			<h2>Demo 1</h2>
 
-			<p>Minimal carousel with default theme</p>
+			<p>Minimal carousel with default theme and overrides an option for it</p>
 
-			<div class="demo" data-bsp-carousel>
-				<div>slide 1</div>
-				<div>slide 2</div>
-				<div>slide 3</div>
-				<div>slide 4</div>
-				<div>slide 5</div>
-				<div>slide 6</div>
+			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "themeConfig" : { "infinite": false } }'>
+				<div class="slide">slide 1</div>
+				<div class="slide">slide 2</div>
+				<div class="slide">slide 3</div>
+				<div class="slide">slide 4</div>
+				<div class="slide">slide 5</div>
+				<div class="slide">slide 6</div>
 			</div>
 		</section>
 
 		<section>
 			<h2>Demo 2</h2>
 
-			<p>Carousel which selects a pre-packaged theme</p>
+			<p>Carousel which selects a pre-packaged theme and overrides an option for it</p>
 
-			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "stage-carousel-dots" }'>
-				<div>slide 1</div>
-				<div>slide 2</div>
-				<div>slide 3</div>
-				<div>slide 4</div>
-				<div>slide 5</div>
-				<div>slide 6</div>
+			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "stage-carousel-dots", "themeConfig" : { "infinite": false } }'>
+				<div class="slide">slide 1</div>
+				<div class="slide">slide 2</div>
+				<div class="slide">slide 3</div>
+				<div class="slide">slide 4</div>
+				<div class="slide">slide 5</div>
+				<div class="slide">slide 6</div>
 			</div>
 		</section>
 
-		<!--
-		<section>
-			<h2>Demo 3</h2>
-
-			<p>Carousel with custom navigation (demonstrates event and method abstractions)</p>
-
-			<div class="demo demo3" data-bsp-carousel data-bsp-carousel-options='{ "arrows": false }'>
-				<div>slide 1</div>
-				<div>slide 2</div>
-				<div>slide 3</div>
-				<div>slide 4</div>
-				<div>slide 5</div>
-				<div>slide 6</div>
-			</div>
-
-			<div><a href="" id="demo3prev">Custom Prev</a> | <a href="" id="demo3next">Custom Next</a></div>
-
-			<script>
-			$(function() {
-				/** carousel:init is an abstraction of slick's init event */ 
-				$('.demo3').on('carousel:init', function(e, carousel) {
-					$('#demo3prev').on('click', function(e) {
-						carousel.prev();
-						e.preventDefault();
-					});
-					$('#demo3next').on('click', function(e) {
-						carousel.next();
-						e.preventDefault();
-					});
-				});
-			});
-			</script>
-		</section>
-		-->
 	</body>
 </html>

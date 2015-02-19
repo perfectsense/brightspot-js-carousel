@@ -19,9 +19,10 @@
 		};
 
 		bsp_carousel.init = function($el, options) {
-			options = this.mergeOptions(options);
 			this.$el = $el;
+			this.addClasses();
 			this.addEvents();
+			options = this.mergeOptions(options);
 			$el.slick(options);
 			$el.data('bsp_carousel', this);
 		};
@@ -35,6 +36,13 @@
 				merged = $.extend({}, merged, options.themeConfig);
 			}
 			return merged;
+		};
+
+		bsp_carousel.addClasses = function(options) {
+			if (typeof options != 'undefined' && options.theme) {
+				console.log(options.theme);
+				this.$el.addClass(options.theme);
+			}
 		};
 
 		/** bind events to element */
