@@ -40,7 +40,6 @@
 
 		bsp_carousel.addClasses = function(options) {
 			if (typeof options != 'undefined' && options.theme) {
-				console.log(options.theme);
 				this.$el.addClass(options.theme);
 			}
 		};
