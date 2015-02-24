@@ -1,0 +1,1 @@
+!function(a,b){"use strict";"function"==typeof define&&define.amd?define(["jquery","bsp-utils","bsp-carousel"],b):b(a.jQuery,a.bsp_utils,a.bsp_carousel,a)}(this,function(a,b,c){var d={init:function(a,b){c.init(a,b)}},e={_defaultOptions:{},_each:function(b){var c=this.option(b),e=Object.create(d);e.init(a(b),c)}};return b.plugin(!1,"bsp","carousel",e)});
