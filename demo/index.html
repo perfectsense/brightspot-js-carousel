@@ -5,18 +5,40 @@
 		<script src="../bower_components/bsp-utils/bsp-utils.js"></script>
 		<script src="../dist/bsp-carousel.js"></script>
 		<script src="../dist/bsp-carousel-plugin.js"></script>
-		<link rel="stylesheet" type="text/css" href="../bower_components/slick-carousel/slick/slick.css" />
-		
+		<link rel="stylesheet" type="text/css" href="../dist/bsp-carousel.css" />
 		<script>if (!window.$) { alert("jquery not found, did you run 'bower install'?"); }</script>
+		<style>
+		body {
+			background: #d3d3d3;
+			font-family: sans-serif;
+		}
+		section {
+			padding-bottom: 25px;
+		}
+		.demo {
+			margin: 0 25px;
+		}
+		.slide {
+			background: #EE7942;
+			border: 1px #000 solid;
+			height: 100px;
+			padding-top: 50px;
+			text-align: center;
+		}
+		.demo-thumbnails {
+			margin-right: 17px;
+		}
+		.demo-thumbnails .slide {
+			margin-right: 10px;
+		}
+		</style>
 	</head>
 	<body>
 		<h1>Brightspot Carousel Demo</h1>
-		<p>Plugin and utility provides a front end to slick carousel. For demos of all slick capabilities, visit <a href="http://kenwheeler.github.io/slick/">the slick homepage</a>.</p>
+		<p>Plugin and utility provides a front end to slick carousel. For demos of all slick capabilities, visit <a href="http://kenwheeler.github.io/slick/">the slick homepage</a>. Also see the repo <a href="https://github.com/perfectsense/brightspot-js-carousel/blob/master/README.md">README</a>.</p>
 
 		<section>
-			<h2>Demo 1</h2>
-
-			<p>Minimal carousel with default theme and overrides an option for it</p>
+			<h2>Base carousel</h2>
 
 			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "themeConfig" : { "infinite": false } }'>
 				<div class="slide">slide 1</div>
@@ -29,11 +51,9 @@
 		</section>
 
 		<section>
-			<h2>Demo 2</h2>
+			<h2>Theme: Carousel Dots</h2>
 
-			<p>Carousel which selects a pre-packaged theme and overrides an option for it</p>
-
-			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "stage-carousel-dots", "themeConfig" : { "infinite": false } }'>
+			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "carousel-dots", "themeConfig" : { "infinite": false } }'>
 				<div class="slide">slide 1</div>
 				<div class="slide">slide 2</div>
 				<div class="slide">slide 3</div>
@@ -41,6 +61,48 @@
 				<div class="slide">slide 5</div>
 				<div class="slide">slide 6</div>
 			</div>
+		</section>
+
+		<section>
+			<h2>Theme: Carousel Horizontal Thumbnails</h2>
+			<p>(see Univision Non-stage Carousel NO Title: Widget 4, Non-stage Carousel: Widget 4, Non-stage Carousel No Title: Widget 6, Non-stage Carousel: Widget 6)</p>
+
+			<div class="demo demo-thumbnails" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "carousel-horizontal-thumbnails" }'>
+				<div class="slide">slide 1</div>
+				<div class="slide">slide 2</div>
+				<div class="slide">slide 3</div>
+				<div class="slide">slide 4</div>
+				<div class="slide">slide 5</div>
+				<div class="slide">slide 6</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>Theme: Carousel Thumbnail Navigation</h2>
+			<p>(see Univision Stage Carousel Thumbnails: Widget 1).</p>
+
+			<div class="demo" id="demo4" data-bsp-carousel data-bsp-carousel data-bsp-carousel-options='{ "themeConfig" : { "arrows": false, "asNavFor": "#demo4nav" } }'>
+				<div class="slide">slide 1</div>
+				<div class="slide">slide 2</div>
+				<div class="slide">slide 3</div>
+				<div class="slide">slide 4</div>
+				<div class="slide">slide 5</div>
+				<div class="slide">slide 6</div>
+			</div>
+
+			<div class="demo demo-thumbnails" id="demo4nav" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "carousel-horizontal-thumbnail-navigation", "themeConfig" : { "asNavFor" : "#demo4" } }'>
+				<div class="slide">slide 1 thumbnail</div>
+				<div class="slide">slide 2 thumbnail</div>
+				<div class="slide">slide 3 thumbnail</div>
+				<div class="slide">slide 4 thumbnail</div>
+				<div class="slide">slide 5 thumbnail</div>
+				<div class="slide">slide 6 thumbnail</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>Theme: Slideshow</h2>
+			<p>To be built (see Univision Slideshow Object)</p>
 		</section>
 
 	</body>

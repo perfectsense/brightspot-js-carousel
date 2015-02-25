@@ -1,5 +1,20 @@
-@bgcolor: #eee;
+// slick
+@import (inline) '../../bower_components/slick-carousel/slick/slick.css';
+@import 'slick-theme.less';
 
-body {
-	background-color: @bgcolor;
+// base styles for all carousels
+.bsp-carousel-item {
+	.slick-prev, .slick-next {
+		height: 40px;
+		width: 40px;
+		&:before {
+			font-size: 40px;
+		}
+	}
+	.slick-prev {
+		left: 15px;
+	}
+	.slick-next {
+		right: 15px;
+	}
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script data-main="require-test" src="../bower_components/requirejs/require.js"></script>
+		<link rel="stylesheet" type="text/css" href="../dist/bsp-carousel.css" /> 
+		<style>
+		body {
+			background: #d3d3d3;
+			font-family: sans-serif;
+		}
+		section {
+			padding-bottom: 25px;
+		}
+		.demo {
+			background: #EE7942;
+			margin: 0 25px;
+		}
+		.slide {
+			height: 100px;
+			padding-top: 50px;
+			text-align: center;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Brightspot RequireJS Test</h1>
+		<p>This just makes sure the module also loads with requirejs.</p>
+
+		<section>
+			<h2>Test 1</h2>
+
+			<p>Init through plugin</p>
+
+			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "themeConfig" : { "infinite": false } }'>
+				<div class="slide">slide 1</div>
+				<div class="slide">slide 2</div>
+				<div class="slide">slide 3</div>
+				<div class="slide">slide 4</div>
+				<div class="slide">slide 5</div>
+				<div class="slide">slide 6</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>Test 2</h2>
+
+			<p>Init through require utility</p>
+
+			<div class="demo" id="demo2">
+				<div class="slide">slide 1</div>
+				<div class="slide">slide 2</div>
+				<div class="slide">slide 3</div>
+				<div class="slide">slide 4</div>
+				<div class="slide">slide 5</div>
+				<div class="slide">slide 6</div>
+			</div>
+		</section>
+
+	</body>
+</html>

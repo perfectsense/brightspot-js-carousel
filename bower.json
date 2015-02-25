@@ -11,8 +11,7 @@
     "slick-carousel": "1.4.1"
   },
   "devDependencies": {
-    "less": "~2.4.0",
-    "bootstrap": "~3.3.2"
+    "requirejs": "jrburke/requirejs#~2.1.16"
   },
   "homepage": "https://github.com/perfectsense/brightspot-js-carousel",
   "keywords": [

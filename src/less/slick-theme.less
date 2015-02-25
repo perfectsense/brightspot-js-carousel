@@ -1,0 +1,219 @@
+/*
+This is a stock slick-theme.css from slick 1.4.1 except we switch in our custom font
+and change image paths to point to bower for inline compile by grunt-css-url-embed
+
+All other modifications to themes should happen through other less files
+in case we want to upgrade this later.
+*/
+@charset 'UTF-8';
+
+@bower-path: '../../bower_components';
+@slick-path: '@{bower-path}/slick-carousel/slick';
+@bsp-font-path: '../fonts';
+@bsp-font-name: 'bsp-carousel';
+@bsp-font-char-circle: "\2022";
+@bsp-font-char-fwd-arrow: "\f054";
+@bsp-font-char-fwd-arrow-invert: "\2192";
+@bsp-font-char-prev-arrow: "\f053";
+@bsp-font-char-prev-arrow-invert: "\2190";
+
+/* Slider */
+.slick-loading .slick-list
+{
+    background: #fff url('@{slick-path}/ajax-loader.gif') center center no-repeat;
+}
+
+/* Icons */
+@font-face
+{
+    font-family: @bsp-font-name;
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('@{bsp-font-path}/@{bsp-font-name}.eot');
+    src: url('@{bsp-font-path}/@{bsp-font-name}.eot?#iefix') format('embedded-opentype'), url('@{bsp-font-path}/@{bsp-font-name}.woff') format('woff'), url('@{bsp-font-path}/@{bsp-font-name}.ttf') format('truetype'), url('@{bsp-font-path}/@{bsp-font-name}.svg') format('svg');
+}
+/* Arrows */
+.slick-prev,
+.slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    padding: 0;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus
+{
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before
+{
+    opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before
+{
+    opacity: .25;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-family: @bsp-font-name;
+    font-size: 20px;
+    line-height: 1;
+
+    opacity: .75;
+    color: white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev
+{
+    left: -25px;
+}
+[dir='rtl'] .slick-prev
+{
+    right: -25px;
+    left: auto;
+}
+.slick-prev:before
+{
+    content: @bsp-font-char-prev-arrow;
+}
+[dir='rtl'] .slick-prev:before
+{
+    content: @bsp-font-char-fwd-arrow;
+}
+
+.slick-next
+{
+    right: -25px;
+}
+[dir='rtl'] .slick-next
+{
+    right: auto;
+    left: -25px;
+}
+.slick-next:before
+{
+    content: @bsp-font-char-fwd-arrow;
+}
+[dir='rtl'] .slick-next:before
+{
+    content: @bsp-font-char-prev-arrow;
+}
+
+/* Dots */
+.slick-slider
+{
+    margin-bottom: 30px;
+}
+
+.slick-dots
+{
+    position: absolute;
+    bottom: -45px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: @bsp-font-name;
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: @bsp-font-char-circle;
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}

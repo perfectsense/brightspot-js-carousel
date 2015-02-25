@@ -1,7 +1,6 @@
 (function(globals, factory) {
     if (typeof define === 'function' && define.amd) {
         define([ 'jquery', 'slick' ], factory);
-
     } else {
         globals.bsp_carousel = factory(globals.jQuery, globals.jQuery.fn.slick);
     }
@@ -10,17 +9,101 @@
 	var bsp_carousel = {};
 
 	(function() {
+		bsp_carousel.breakpoints = {
+			lg: 1024,
+			md: 900,
+			sm: 768,
+			xsm: 400,
+			xxsm: 320
+		};
+
 		bsp_carousel.themes = {
-			'stage-carousel-dots': {
-				dots: true,
-				nextArrow: '<button type="button" class="slick-prev">&gt;</button>',
-				prevArrow: '<button type="button" class="slick-next">&lt;</button>'
+			'carousel-dots': {
+				dots: true
+			},
+			'carousel-horizontal-thumbnails': {
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				responsive: [
+					{
+						breakpoint: bsp_carousel.breakpoints.lg,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
+					},
+					{
+						breakpoint: bsp_carousel.breakpoints.md,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
+					},
+					{
+						breakpoint: bsp_carousel.breakpoints.sm,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
+						breakpoint: bsp_carousel.breakpoints.xsm,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: bsp_carousel.breakpoints.xxsm,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					}
+				]
+			},
+			'carousel-horizontal-thumbnail-navigation': {
+				focusOnSelect: true,
+				slidesToShow: 4,
+				slidesToScroll: 1,
+				responsive: [
+					{
+						breakpoint: bsp_carousel.breakpoints.lg,
+						settings: {
+							slidesToShow: 4
+						}
+					},
+					{
+						breakpoint: bsp_carousel.breakpoints.md,
+						settings: {
+							slidesToShow: 4
+						}
+					},
+					{
+						breakpoint: bsp_carousel.breakpoints.sm,
+						settings: {
+							slidesToShow: 3
+						}
+					},
+					{
+						breakpoint: bsp_carousel.breakpoints.xsm,
+						settings: {
+							slidesToShow: 2
+						}
+					},
+					{
+						breakpoint: bsp_carousel.breakpoints.xxsm,
+						settings: {
+							slidesToShow: 2
+						}
+					}
+				]
 			}
 		};
 
 		bsp_carousel.init = function($el, options) {
 			this.$el = $el;
-			this.addClasses();
+			this.addClasses(options);
 			this.addEvents();
 			options = this.mergeOptions(options);
 			$el.slick(options);
