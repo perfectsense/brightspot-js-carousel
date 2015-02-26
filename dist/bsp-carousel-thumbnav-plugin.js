@@ -78,6 +78,6 @@
         }
     };
 
-    return bsp_utils.plugin(false, 'bsp', 'carousel-thumbnav-plugin', thePlugin);
+    return bsp_utils.plugin(false, 'bsp', 'carousel-thumbnav', thePlugin);
 
 });
