@@ -61,43 +61,6 @@
 						}
 					}
 				]
-			},
-			'carousel-horizontal-thumbnail-navigation': {
-				focusOnSelect: true,
-				slidesToShow: 4,
-				slidesToScroll: 1,
-				responsive: [
-					{
-						breakpoint: bsp_carousel.breakpoints.lg,
-						settings: {
-							slidesToShow: 4
-						}
-					},
-					{
-						breakpoint: bsp_carousel.breakpoints.md,
-						settings: {
-							slidesToShow: 4
-						}
-					},
-					{
-						breakpoint: bsp_carousel.breakpoints.sm,
-						settings: {
-							slidesToShow: 3
-						}
-					},
-					{
-						breakpoint: bsp_carousel.breakpoints.xs,
-						settings: {
-							slidesToShow: 2
-						}
-					},
-					{
-						breakpoint: bsp_carousel.breakpoints.xxs,
-						settings: {
-							slidesToShow: 2
-						}
-					}
-				]
 			}
 		};
 

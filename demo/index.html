@@ -5,6 +5,7 @@
 		<script src="../bower_components/bsp-utils/bsp-utils.js"></script>
 		<script src="../dist/bsp-carousel.js"></script>
 		<script src="../dist/bsp-carousel-plugin.js"></script>
+		<script src="../dist/bsp-carousel-thumbnav-plugin.js"></script>
 		<link rel="stylesheet" type="text/css" href="../dist/bsp-carousel.css" />
 		<script>if (!window.$) { alert("jquery not found, did you run 'bower install'?"); }</script>
 		<style>
@@ -51,7 +52,7 @@
 		</section>
 
 		<section>
-			<h2>Theme: Carousel Dots</h2>
+			<h2>Theme: carousel-dots</h2>
 
 			<div class="demo" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "carousel-dots", "themeConfig" : { "infinite": false } }'>
 				<div class="slide">slide 1</div>
@@ -64,7 +65,7 @@
 		</section>
 
 		<section>
-			<h2>Theme: Carousel Horizontal Thumbnails</h2>
+			<h2>Theme: carousel-horizontal-thumbnails</h2>
 			<p>(see Univision Non-stage Carousel NO Title: Widget 4, Non-stage Carousel: Widget 4, Non-stage Carousel No Title: Widget 6, Non-stage Carousel: Widget 6)</p>
 
 			<div class="demo demo-thumbnails" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "carousel-horizontal-thumbnails" }'>
@@ -78,31 +79,33 @@
 		</section>
 
 		<section>
-			<h2>Theme: Carousel Thumbnail Navigation</h2>
-			<p>(see Univision Stage Carousel Thumbnails: Widget 1).</p>
-
-			<div class="demo" id="demo4" data-bsp-carousel data-bsp-carousel data-bsp-carousel-options='{ "themeConfig" : { "arrows": false, "asNavFor": "#demo4nav" } }'>
-				<div class="slide">slide 1</div>
-				<div class="slide">slide 2</div>
-				<div class="slide">slide 3</div>
-				<div class="slide">slide 4</div>
-				<div class="slide">slide 5</div>
-				<div class="slide">slide 6</div>
-			</div>
-
-			<div class="demo demo-thumbnails" id="demo4nav" data-bsp-carousel data-bsp-carousel-options='{ "theme" : "carousel-horizontal-thumbnail-navigation", "themeConfig" : { "asNavFor" : "#demo4" } }'>
-				<div class="slide">slide 1 thumbnail</div>
-				<div class="slide">slide 2 thumbnail</div>
-				<div class="slide">slide 3 thumbnail</div>
-				<div class="slide">slide 4 thumbnail</div>
-				<div class="slide">slide 5 thumbnail</div>
-				<div class="slide">slide 6 thumbnail</div>
-			</div>
+			<h2>Theme: Slideshow</h2>
+			<p>To be built (see Univision Slideshow Object)</p>
 		</section>
 
 		<section>
-			<h2>Theme: Slideshow</h2>
-			<p>To be built (see Univision Slideshow Object)</p>
+			<h2>Plugin: bsp-carousel-thumbnav-plugin</h2>
+			<p>Combines two carousels together, using one as a "stage" and one to navigate the stage.</p>
+			<p>(see Univision Stage Carousel Thumbnails: Widget 1).</p>
+
+			<div data-bsp-carousel-thumbnav-plugin>
+				<div class="demo bsp-carousel-stage">
+					<div class="slide">slide 1</div>
+					<div class="slide">slide 2</div>
+					<div class="slide">slide 3</div>
+					<div class="slide">slide 4</div>
+					<div class="slide">slide 5</div>
+					<div class="slide">slide 6</div>
+				</div>
+				<div class="demo bsp-carousel-nav">
+					<div class="slide">slide 1 thumbnail</div>
+					<div class="slide">slide 2 thumbnail</div>
+					<div class="slide">slide 3 thumbnail</div>
+					<div class="slide">slide 4 thumbnail</div>
+					<div class="slide">slide 5 thumbnail</div>
+					<div class="slide">slide 6 thumbnail</div>
+				</div>
+			</div>
 		</section>
 
 	</body>

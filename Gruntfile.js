@@ -37,7 +37,8 @@ module.exports = function(grunt) {
 			dist: {
 				files: {
 					'dist/bsp-carousel.min.js' : ['dist/bsp-carousel.js'],
-					'dist/bsp-carousel-plugin.min.js' : ['src/js/bsp-carousel-plugin.js']
+					'dist/bsp-carousel-plugin.min.js' : ['src/js/bsp-carousel-plugin.js'],
+					'dist/bsp-carousel-thumbnav-plugin.min.js' : ['src/js/bsp-carousel-thumbnav-plugin.js']
 				}
 			}
 		},
@@ -52,7 +53,7 @@ module.exports = function(grunt) {
 				dest: 'build/'
 			},
 			dist: {
-				src: ['src/js/bsp-carousel-plugin.js','build/bsp-carousel.css'],
+				src: ['src/js/bsp-carousel-plugin.js','src/js/bsp-carousel-thumbnav-plugin.js','build/bsp-carousel.css'],
 				dest: 'dist/',
 				expand: true,
 				flatten: true
