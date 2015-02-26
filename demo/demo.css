@@ -1,0 +1,23 @@
+body {
+	background: #d3d3d3;
+	font-family: sans-serif;
+}
+section {
+	padding-bottom: 25px;
+}
+.demo {
+	margin: 0 25px;
+}
+.slide {
+	background: #EE7942;
+	border: 1px #000 solid;
+	height: 100px;
+	padding-top: 50px;
+	text-align: center;
+}
+.demo-thumbnails {
+	margin-right: 17px;
+}
+.demo-thumbnails .slide {
+	margin-right: 10px;
+}
