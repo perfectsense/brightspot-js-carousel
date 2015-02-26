@@ -10,11 +10,11 @@
 
 	(function() {
 		bsp_carousel.breakpoints = {
-			lg: 1024,
-			md: 900,
+			lg: 1280,
+			md: 1024,
 			sm: 768,
-			xsm: 400,
-			xxsm: 320
+			xs: 480,
+			xxs: 320
 		};
 
 		bsp_carousel.themes = {
@@ -47,14 +47,14 @@
 						}
 					},
 					{
-						breakpoint: bsp_carousel.breakpoints.xsm,
+						breakpoint: bsp_carousel.breakpoints.xs,
 						settings: {
 							slidesToShow: 2,
 							slidesToScroll: 2
 						}
 					},
 					{
-						breakpoint: bsp_carousel.breakpoints.xxsm,
+						breakpoint: bsp_carousel.breakpoints.xxs,
 						settings: {
 							slidesToShow: 2,
 							slidesToScroll: 2
@@ -86,13 +86,13 @@
 						}
 					},
 					{
-						breakpoint: bsp_carousel.breakpoints.xsm,
+						breakpoint: bsp_carousel.breakpoints.xs,
 						settings: {
 							slidesToShow: 2
 						}
 					},
 					{
-						breakpoint: bsp_carousel.breakpoints.xxsm,
+						breakpoint: bsp_carousel.breakpoints.xxs,
 						settings: {
 							slidesToShow: 2
 						}
