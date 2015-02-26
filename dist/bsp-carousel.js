@@ -2314,8 +2314,8 @@
 		bsp_carousel.getOption = function(option) {
 			return this.$el.slick('slickGetOption', option);
 		};
-		bsp_carousel.setOption = function(option) {
-			this.$el.slick('slickSetOption', option);
+		bsp_carousel.setOption = function(option, value) {
+			this.$el.slick('slickSetOption', option, value);
 		};
 		bsp_carousel.destroy = function() {
 			this.$el.slick('unslick');
