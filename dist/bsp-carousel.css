@@ -269,18 +269,18 @@ in case we want to upgrade this later.
   opacity: .75;
   color: black;
 }
-.bsp-carousel-item .slick-prev,
-.bsp-carousel-item .slick-next {
+.bsp-carousel .slick-prev,
+.bsp-carousel .slick-next {
   height: 40px;
   width: 40px;
 }
-.bsp-carousel-item .slick-prev:before,
-.bsp-carousel-item .slick-next:before {
+.bsp-carousel .slick-prev:before,
+.bsp-carousel .slick-next:before {
   font-size: 40px;
 }
-.bsp-carousel-item .slick-prev {
+.bsp-carousel .slick-prev {
   left: 15px;
 }
-.bsp-carousel-item .slick-next {
+.bsp-carousel .slick-next {
   right: 15px;
 }

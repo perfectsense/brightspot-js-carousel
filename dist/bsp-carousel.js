@@ -2272,6 +2272,7 @@
 		};
 
 		bsp_carousel.addClasses = function(options) {
+			this.$el.addClass('bsp-carousel');
 			if (typeof options != 'undefined' && options.theme) {
 				this.$el.addClass(options.theme);
 			}
