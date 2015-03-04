@@ -65,12 +65,14 @@
 		};
 
 		bsp_carousel.init = function($el, options) {
-			this.$el = $el;
-			this.addClasses(options);
-			this.addEvents();
-			options = this.mergeOptions(options);
+			var self = $.extend(true, {}, this);
+			self.$el = $el;
+			self.addClasses(options);
+			self.addEvents();
+			options = self.mergeOptions(options);
 			$el.slick(options);
-			$el.data('bsp_carousel', this);
+			$el.data('bsp_carousel', self);
+			return self;
 		};
 
 		bsp_carousel.mergeOptions = function(options) {
