@@ -2217,6 +2217,9 @@
 		bsp_carousel.init = function($el, options) {
 			var self = $.extend(true, {}, this);
 			self.$el = $el;
+			if (typeof options.onLoad == 'function') {
+				self.bind('carousel:init', options.onLoad);
+			}
 			self.addClasses(options);
 			self.addEvents();
 			options = self.mergeOptions(options);
