@@ -18,9 +18,15 @@
 			var $nav = $el.find('.bsp-carousel-nav');
             var $stage = $el.find('.bsp-carousel-stage');
             $stage.addClass(stageClass);
-            options.nav.themeConfig.asNavFor = '.' + stageClass;
-            bsp_carousel.init($stage, options.stage);
-            bsp_carousel.init($nav, options.nav);
+            if (options.nav != 'disable' && options.stage != 'disable') {
+                options.nav.themeConfig.asNavFor = '.' + stageClass;
+            }
+            if (options.stage != 'disable') {
+                bsp_carousel.init($stage, options.stage);
+            }
+            if (options.nav != 'disable') {
+                bsp_carousel.init($nav, options.nav);
+            }
 		}
 	};
 
