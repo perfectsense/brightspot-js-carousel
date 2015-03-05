@@ -11,6 +11,7 @@ section {
 .slide {
 	background: #EE7942;
 	border: 1px #000 solid;
+	display: inline-block;
 	height: 100px;
 	padding-top: 50px;
 	text-align: center;
@@ -20,4 +21,12 @@ section {
 }
 .demo-thumbnails .slide {
 	margin-right: 10px;
+}
+.demo-thumbnav.bsp-carousel-stage {
+	margin: 0 auto;
+	width: 300px;
+}
+.demo-thumbnav.bsp-carousel-nav img {
+	height: 100%;
+	width: 100%;
 }

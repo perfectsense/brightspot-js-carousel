@@ -28,20 +28,21 @@
         '_defaultOptions': {
             nav: {
                 themeConfig: {
+                    centerMode: true,
                     focusOnSelect: true,
-                    slidesToShow: 4,
+                    slidesToShow: 5,
                     slidesToScroll: 1,
                     responsive: [
                         {
                             breakpoint: bsp_carousel.breakpoints.lg,
                             settings: {
-                                slidesToShow: 4
+                                slidesToShow: 5
                             }
                         },
                         {
                             breakpoint: bsp_carousel.breakpoints.md,
                             settings: {
-                                slidesToShow: 4
+                                slidesToShow: 5
                             }
                         },
                         {
@@ -53,13 +54,13 @@
                         {
                             breakpoint: bsp_carousel.breakpoints.xs,
                             settings: {
-                                slidesToShow: 2
+                                slidesToShow: 3
                             }
                         },
                         {
                             breakpoint: bsp_carousel.breakpoints.xxs,
                             settings: {
-                                slidesToShow: 2
+                                slidesToShow: 3
                             }
                         }
                     ]
