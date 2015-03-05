@@ -7,19 +7,20 @@
   ],
   "dependencies": {
     "jquery": ">=1.7.0",
-    "bsp-utils": ">=1.0.0",
-    "slick-carousel": "1.4.1"
+    "bsp-utils": ">=1.0.0"
   },
   "devDependencies": {
+    "slick-carousel": "1.4.1",
     "requirejs": "jrburke/requirejs#~2.1.16"
   },
   "homepage": "https://github.com/perfectsense/brightspot-js-carousel",
+  "ignore": ["demo","Gruntfile.js","package.json",".gitignore"],
   "keywords": [
     "brightspot",
     "jquery"
   ],
   "license": "MIT",
-  "main": "bsp-carousel.js",
+  "main": ["dist/bsp-carousel.js","dist/bsp-carousel-plugin.js","dist/bsp-carousel-thumbnav-plugin.js"],
   "name": "bsp-carousel",
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
