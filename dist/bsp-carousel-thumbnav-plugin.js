@@ -16,17 +16,23 @@
 			this.$nav = $el.find('.bsp-carousel-nav');
             this.$stage = $el.find('.bsp-carousel-stage');
             this.options = options;
+            this.setInstanceId();
             this.buildCarousels();
             this.addEvents();
 		},
+        setInstanceId: function() {
+            this.instanceId = (new Date()).getTime() + '-' + Math.ceil(Math.random()*100000);
+        },
         buildCarousels: function() {
-            var randomId;
+            var navClass;
             var stageClass;
             if (this.options.nav != 'disable' && this.options.stage != 'disable') {
-                randomId = (new Date()).getTime() + '-' + Math.ceil(Math.random()*100000);
-                stageClass = 'bsp-carousel-stage-' + randomId;
+                navClass = 'bsp-carousel-nav-' + this.instanceId;
+                stageClass = 'bsp-carousel-stage-' + this.instanceId;
+                this.$nav.addClass(navClass);
                 this.$stage.addClass(stageClass);
                 this.options.nav.themeConfig.asNavFor = '.' + stageClass;
+                this.options.stage.themeConfig.asNavFor = '.' + navClass;
             }
             if (this.options.stage != 'disable') {
                 this.stage = bsp_carousel.init(this.$stage, this.options.stage);
@@ -60,6 +66,8 @@
         '_defaultOptions': {
             nav: {
                 themeConfig: {
+                    centerMode: true,
+                    centerPadding: '0px',
                     focusOnSelect: true,
                     slidesToShow: 3,
                     slidesToScroll: 1
