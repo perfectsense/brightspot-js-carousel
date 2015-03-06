@@ -22,5 +22,5 @@
   "license": "MIT",
   "main": ["dist/bsp-carousel.js","dist/bsp-carousel-plugin.js","dist/bsp-carousel-thumbnav-plugin.js"],
   "name": "bsp-carousel",
-  "version": "0.0.4"
+  "version": "0.0.5"
 }
