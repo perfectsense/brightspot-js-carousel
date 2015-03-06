@@ -36,40 +36,8 @@
                 themeConfig: {
                     centerMode: true,
                     focusOnSelect: true,
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    responsive: [
-                        {
-                            breakpoint: bsp_carousel.breakpoints.lg,
-                            settings: {
-                                slidesToShow: 5
-                            }
-                        },
-                        {
-                            breakpoint: bsp_carousel.breakpoints.md,
-                            settings: {
-                                slidesToShow: 5
-                            }
-                        },
-                        {
-                            breakpoint: bsp_carousel.breakpoints.sm,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: bsp_carousel.breakpoints.xs,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: bsp_carousel.breakpoints.xxs,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        }
-                    ]
+                    slidesToShow: 3,
+                    slidesToScroll: 1
                 }
             },
             stage: {
