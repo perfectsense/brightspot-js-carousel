@@ -34,7 +34,6 @@
         '_defaultOptions': {
             nav: {
                 themeConfig: {
-                    centerMode: true,
                     focusOnSelect: true,
                     slidesToShow: 3,
                     slidesToScroll: 1
