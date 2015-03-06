@@ -13,21 +13,47 @@
 
 	var module = {
 		init: function($el, options) {
-            var randomId = (new Date()).getTime() + '-' + Math.ceil(Math.random()*100000);
-            var stageClass = 'bsp-carousel-stage-' + randomId;
-			var $nav = $el.find('.bsp-carousel-nav');
-            var $stage = $el.find('.bsp-carousel-stage');
-            $stage.addClass(stageClass);
-            if (options.nav != 'disable' && options.stage != 'disable') {
-                options.nav.themeConfig.asNavFor = '.' + stageClass;
+			this.$nav = $el.find('.bsp-carousel-nav');
+            this.$stage = $el.find('.bsp-carousel-stage');
+            this.options = options;
+            this.buildCarousels();
+            this.addEvents();
+		},
+        buildCarousels: function() {
+            var randomId;
+            var stageClass;
+            if (this.options.nav != 'disable' && this.options.stage != 'disable') {
+                randomId = (new Date()).getTime() + '-' + Math.ceil(Math.random()*100000);
+                stageClass = 'bsp-carousel-stage-' + randomId;
+                this.$stage.addClass(stageClass);
+                this.options.nav.themeConfig.asNavFor = '.' + stageClass;
             }
-            if (options.stage != 'disable') {
-                bsp_carousel.init($stage, options.stage);
+            if (this.options.stage != 'disable') {
+                this.stage = bsp_carousel.init(this.$stage, this.options.stage);
             }
-            if (options.nav != 'disable') {
-                bsp_carousel.init($nav, options.nav);
+            if (this.options.nav != 'disable') {
+                this.nav = bsp_carousel.init(this.$nav, this.options.nav);
             }
-		}
+            if (this.options.nav != 'disable' && this.options.stage != 'disable') {
+                this.setCurrentThumbnail();
+            }
+        },
+        addEvents: function() {
+            var self = this;
+            self.stage.bind('carousel:afterChange', function() {
+                self.setCurrentThumbnail();
+            });
+        },
+        setCurrentThumbnail: function() {
+            var $navSlides = this.$nav.find('.slick-slide');
+            var index = this.$stage.find('.slick-active').data('slick-index');
+            $navSlides.removeClass('current');
+            $navSlides.each(function(key, slide) {
+                if ($(slide).data('slick-index') == index) {
+                    $(slide).addClass('current');
+                }
+            });
+        }
 	};
 
 	var thePlugin = {

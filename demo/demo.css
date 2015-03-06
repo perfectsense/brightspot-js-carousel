@@ -30,3 +30,8 @@ section {
 	height: 100%;
 	width: 100%;
 }
+.demo-thumbnav .current img {
+	border: 1px #EE7942 solid;
+	height: calc(100% - 2px);
+	width: calc(100% - 2px);
+}
