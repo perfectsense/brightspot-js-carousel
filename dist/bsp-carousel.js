@@ -2172,6 +2172,7 @@
 				dots: true
 			},
 			'carousel-horizontal-thumbnails': {
+				lazyLoad: 'progressive',
 				slidesToShow: 4,
 				slidesToScroll: 4,
 				responsive: [
