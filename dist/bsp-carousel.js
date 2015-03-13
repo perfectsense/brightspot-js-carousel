@@ -2218,7 +2218,7 @@
 		bsp_carousel.init = function($el, options) {
 			var self = $.extend(true, {}, this);
 			self.$el = $el;
-			if (typeof options.onLoad == 'function') {
+			if (typeof options == 'object' && typeof options.onLoad == 'function') {
 				self.bind('carousel:init', options.onLoad);
 			}
 			self.addClasses(options);
@@ -2231,6 +2231,9 @@
 
 		bsp_carousel.mergeOptions = function(options) {
 			var merged = {};
+			if (typeof options != 'object') {
+				var options = merged;
+			}
 			if (options.theme) {
 				merged = this.themes[options.theme];
 			}
