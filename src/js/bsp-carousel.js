@@ -179,6 +179,11 @@
 		bsp_carousel.destroy = function() {
 			this.$el.slick('unslick');
 		};
+
+		/** extra helper methods */
+        bsp_carousel.slideCount = function() {
+        	return this.$el.slick('getSlick').slideCount;
+        };
 	})();
 
 	return bsp_carousel;

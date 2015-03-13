@@ -119,6 +119,9 @@ Abstraction of slickSetOption method
 
 Abstraction of unslick method
 
+**bsp_carousel.slideCount**
+
+Returns total number of slides
 
 ## bsp-carousel-plugin
 
