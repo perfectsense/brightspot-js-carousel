@@ -2171,7 +2171,7 @@
 		};
 
 		bsp_carousel.init = function($el, options) {
-			var self = $.extend(true, {}, this);
+			var self = Object.create(this);
 			self.$el = $el;
 			if (typeof options == 'object' && typeof options.onLoad == 'function') {
 				self.bind('carousel:init', options.onLoad);
