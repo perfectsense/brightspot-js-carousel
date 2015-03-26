@@ -23,9 +23,12 @@
 		bsp_carousel.init = function($el, options) {
 			var self = Object.create(this);
 			self.$el = $el;
+
+			/** @deprecated don't pass onLoad, just bind to carousel:init event */
 			if (typeof options == 'object' && typeof options.onLoad == 'function') {
 				self.bind('carousel:init', options.onLoad);
 			}
+
 			self.addClasses(options);
 			self.addEvents();
 			options = self.mergeOptions(options);
