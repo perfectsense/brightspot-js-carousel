@@ -2291,48 +2291,73 @@
 
 		/** slick method abstractions */
 		bsp_carousel.currentSlide = function() {
-			return this.$el.slick('slickCurrentSlide');
+			return this._slickMethod('slickCurrentSlide');
 		};
 		bsp_carousel.goTo = function(i) {
-			this.$el.slick('slickGoTo', i);
+			this._slickMethod('slickGoTo', i);
 		};
 		bsp_carousel.next = function() {
-			this.$el.slick('slickNext');
+			this._slickMethod('slickNext');
 		};
 		bsp_carousel.prev = function() {
-			this.$el.slick('slickPrev');
+			this._slickMethod('slickPrev');
 		};
 		bsp_carousel.pause = function() {
-			this.$el.slick('slickPause');
+			this._slickMethod('slickPause');
 		};
 		bsp_carousel.play = function() {
-			this.$el.slick('slickPlay');
+			this._slickMethod('slickPlay');
 		};
 		bsp_carousel.add = function(ele, index, addBefore) {
-			this.$el.slick('slickAdd', ele, index, addBefore);
+			this._slickMethod('slickAdd', ele, index, addBefore);
 		};
 		bsp_carousel.remove = function(index, removeBefore) {
-			this.$el.slick('slickRemove', index, removeBefore);
+			this._slickMethod('slickRemove', index, removeBefore);
 		};
 		bsp_carousel.filter = function(selectorOrFunction) {
-			this.$el.slick('slickFilter', selectorOrFunction);
+			this._slickMethod('slickFilter', selectorOrFunction);
 		};
 		bsp_carousel.unfilter = function(i) {
-			this.$el.slick('slickUnfilter', i);
+			this._slickMethod('slickUnfilter', i);
 		};
 		bsp_carousel.getOption = function(option) {
-			return this.$el.slick('slickGetOption', option);
+			return this._slickMethod('slickGetOption', option);
 		};
 		bsp_carousel.setOption = function(option, value) {
-			this.$el.slick('slickSetOption', option, value);
+			this._slickMethod('slickSetOption', option, value);
 		};
 		bsp_carousel.destroy = function() {
-			this.$el.slick('unslick');
+			this._slickMethod('unslick');
 		};
 
 		/** extra helper methods */
         bsp_carousel.slideCount = function() {
-        	return this.$el.slick('getSlick').slideCount;
+            return this._slickMethod('getSlick').slideCount;
+        };
+
+        /** private methods */
+
+        /**
+         * slick methods are not available yet during events called on page load,
+         * so created this abstraction to fail gracefully for now
+         */
+        bsp_carousel._slickMethod = function() {
+            if (this._slickMethodsAvailable()) {
+                return this.$el.slick.apply(this.$el.slick, arguments);
+            } else {
+                return {};
+            }
+        };
+        bsp_carousel._slickMethodsAvailable = function() {
+            if (this._slickMethodsFound) {
+                return true;
+            } else {
+                try {
+                    this.$el.slick('getSlick');
+                    this._slickMethodsFound = true;
+                    return true;
+                } catch(e) {}
+            }
         };
 	})();
 
