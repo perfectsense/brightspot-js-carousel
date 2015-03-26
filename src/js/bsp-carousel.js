@@ -151,9 +151,13 @@
          */
         bsp_carousel._slickMethod = function() {
             if (this._slickMethodsAvailable()) {
-                return this.$el.slick.apply(this.$el.slick, arguments);
+                return this.$el.slick.apply(this.$el, arguments);
             } else {
-                return {};
+                if (arguments[0] == 'getSlick') {
+                    return {
+                        slideCount: 0
+                    };
+                }
             }
         };
         bsp_carousel._slickMethodsAvailable = function() {
