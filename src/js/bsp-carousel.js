@@ -9,14 +9,6 @@
 	var bsp_carousel = {};
 
 	(function() {
-		bsp_carousel.breakpoints = {
-			lg: 1280,
-			md: 1024,
-			sm: 768,
-			xs: 480,
-			xxs: 320
-		};
-
 		bsp_carousel.themes = {
 			'carousel-dots': {
 				dots: true
@@ -24,44 +16,7 @@
 			'carousel-horizontal-thumbnails': {
 				lazyLoad: 'progressive',
 				slidesToShow: 4,
-				slidesToScroll: 4,
-				responsive: [
-					{
-						breakpoint: bsp_carousel.breakpoints.lg,
-						settings: {
-							slidesToShow: 4,
-							slidesToScroll: 4
-						}
-					},
-					{
-						breakpoint: bsp_carousel.breakpoints.md,
-						settings: {
-							slidesToShow: 4,
-							slidesToScroll: 4
-						}
-					},
-					{
-						breakpoint: bsp_carousel.breakpoints.sm,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 3
-						}
-					},
-					{
-						breakpoint: bsp_carousel.breakpoints.xs,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: bsp_carousel.breakpoints.xxs,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 2
-						}
-					}
-				]
+				slidesToScroll: 4
 			}
 		};
 
