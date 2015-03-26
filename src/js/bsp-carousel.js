@@ -40,7 +40,7 @@
 		bsp_carousel.mergeOptions = function(options) {
 			var merged = {};
 			if (typeof options != 'object') {
-				var options = merged;
+				options = merged;
 			}
 			if (options.theme) {
 				merged = this.themes[options.theme];
