@@ -39,7 +39,7 @@
         buildCarousels: function() {
             var navClass;
             var stageClass;
-            if (this.options.nav != 'disable' && this.options.stage != 'disable') {
+            if (this.options.nav != 'disable' && this.options.stage != 'disable' && !this.options.disableAsNavFor) {
                 navClass = 'bsp-carousel-nav-' + this.instanceId;
                 stageClass = 'bsp-carousel-stage-' + this.instanceId;
                 this.$nav.addClass(navClass);
