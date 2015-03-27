@@ -2217,20 +2217,20 @@
 		bsp_carousel.trigger = function() {
 			var args = $.makeArray(arguments);
 			var event = args.shift();
-			args.unshift(event, this);
-			this.$el.trigger.apply(this.$el, args);
+			args.unshift(this);
+			this.$el.trigger.apply(this.$el, [event, args]);
 		};
 
 		/** slick event abstractions */
 		bsp_carousel.addEvents = function() {
 			var self = this;
-			this.bind('afterChange', function(slick, currentSlide) {
+			this.bind('afterChange', function(event, slick, currentSlide) {
 				self.trigger('carousel:afterChange', currentSlide);
 			});
-			this.bind('beforeChange', function(slick, currentSlide, nextSlide) {
+			this.bind('beforeChange', function(event, slick, currentSlide, nextSlide) {
 				self.trigger('carousel:beforeChange', currentSlide, nextSlide);
 			});
-			this.bind('edge', function(slick, direction) {
+			this.bind('edge', function(event, slick, direction) {
 				self.trigger('carousel:edge', direction);
 			});
 			this.bind('init', function() {
@@ -2242,7 +2242,7 @@
 			this.bind('setPosition', function() {
 				self.$el.trigger('carousel:setPosition');
 			});
-			this.bind('swipe', function(slick, direction) {
+			this.bind('swipe', function(event, slick, direction) {
 				self.$el.trigger('carousel:swipe', direction);
 			});
 		};
