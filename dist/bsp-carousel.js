@@ -2180,6 +2180,7 @@
 			}
 
 			self.addClasses(options);
+			self._createSlickMethodsAvailablePromise();
 			self.addEvents();
 			options = self.mergeOptions(options);
 			$el.slick(options);
@@ -2233,17 +2234,17 @@
 			this.bind('edge', function(event, slick, direction) {
 				self.trigger('carousel:edge', direction);
 			});
-			this.bind('init', function() {
-				self.trigger('carousel:init');
-			});
 			this.bind('reinit', function() {
-				self.$el.trigger('carousel:reinit');
+				self.trigger('carousel:reinit');
 			});
 			this.bind('setPosition', function() {
-				self.$el.trigger('carousel:setPosition');
+				self.trigger('carousel:setPosition');
 			});
 			this.bind('swipe', function(event, slick, direction) {
-				self.$el.trigger('carousel:swipe', direction);
+				self.trigger('carousel:swipe', direction);
+			});
+			self._slickMethodsAvailablePromise.done(function() {
+				self.trigger('carousel:init');
 			});
 		};
 
@@ -2296,8 +2297,9 @@
         /** private methods */
 
         /**
-         * slick methods are not available yet during events called on page load,
-         * so created this abstraction to fail gracefully for now
+         * slick methods are not available yet when slick's init event fires,
+         * so instead creating our own init event that doesn't fire until slick
+         * is fully loaded and methods are available
          */
         bsp_carousel._slickMethod = function() {
             if (this._slickMethodsAvailable()) {
@@ -2320,6 +2322,22 @@
                     return true;
                 } catch(e) {}
             }
+        };
+        bsp_carousel._createSlickMethodsAvailablePromise = function() {
+        	var self = this;
+        	var deferred = $.Deferred();
+        	var checks = 0;
+        	self._slickMethodsAvailablePromise = deferred.promise();
+        	self._checkSlickInterval = setInterval(function() {
+        		if (self._slickMethodsAvailable()) {
+        			deferred.resolve();
+        			clearInterval(self._checkSlickInterval);
+        		} else if (checks > 10) {
+        			deferred.reject();
+        			clearInterval(self._checkSlickInterval);
+        		}
+        		checks++;
+        	}, 100);
         };
 	})();
 
