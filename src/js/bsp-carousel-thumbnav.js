@@ -27,7 +27,7 @@
 			var self = $.extend(true, {}, this);
 			self.$nav = $el.find('.bsp-carousel-nav');
             self.$stage = $el.find('.bsp-carousel-stage');
-            self.options = $.extend({}, self.defaults, options);
+            self.options = $.extend(true, {}, self.defaults, options);
             self.setInstanceId();
             self.buildCarousels();
             self.addEvents();
