@@ -10,7 +10,7 @@
     "bsp-utils": ">=1.0.0"
   },
   "devDependencies": {
-    "slick-carousel": "1.4.1",
+    "slick-carousel": "1.5.0",
     "requirejs": "jrburke/requirejs#~2.1.16"
   },
   "homepage": "https://github.com/perfectsense/brightspot-js-carousel",
