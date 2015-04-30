@@ -11,16 +11,10 @@
 
 })(this, function($, bsp_utils, bsp_carousel_thumbnav, globals) {
 
-    var module = {
-        init: function($el, options) {
-            bsp_carousel_thumbnav.init($el, options);
-        }
-    };
-
 	var thePlugin = {
         '_each': function(item) {
             var options = this.option(item);
-            var moduleInstance = Object.create(module);
+            var moduleInstance = Object.create(bsp_carousel_thumbnav);
             moduleInstance.init($(item), options);
         }
     };

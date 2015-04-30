@@ -21,15 +21,14 @@
 		};
 
 		bsp_carousel.init = function($el, options) {
-			var self = Object.create(this);
-			self.$el = $el;
-			self.addClasses(options);
-			self._createSlickMethodsAvailablePromise();
-			self.addEvents();
-			options = self.mergeOptions(options);
+			this.$el = $el;
+			this.addClasses(options);
+			this._createSlickMethodsAvailablePromise();
+			this.addEvents();
+			options = this.mergeOptions(options);
 			$el.slick(options);
-			$el.data('bsp_carousel', self);
-			return self;
+			$el.data('bsp_carousel', this);
+			return this;
 		};
 
 		bsp_carousel.mergeOptions = function(options) {

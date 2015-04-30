@@ -11,6 +11,7 @@ require.config({
 
 require(['jquery', 'bsp-carousel', 'bsp-carousel-plugin', 'bsp-carousel-thumbnav-plugin'], function($, carousel) {
 	$(function() {
-		carousel.init($('#demo2'), { themeConfig: { infinite: false } });
+		var plugin = Object.create(carousel);
+		plugin.init($('#demo2'), { themeConfig: { infinite: false } });
 	});
 });

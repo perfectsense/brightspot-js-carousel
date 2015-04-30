@@ -11,20 +11,10 @@
 
 })(this, function($, bsp_utils, bsp_carousel, globals) {
 
-	var module = {
-		init: function($el, options) {
-			bsp_carousel.init($el, options);
-		}
-	};
-
 	var thePlugin = {
-		// we could override slick defaults here
-        '_defaultOptions': {
-            
-        },
         '_each': function(item) {
             var options = this.option(item);
-            var moduleInstance = Object.create(module);
+            var moduleInstance = Object.create(bsp_carousel);
             moduleInstance.init($(item), options);
         }
     };

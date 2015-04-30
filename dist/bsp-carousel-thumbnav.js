@@ -24,14 +24,13 @@
             }
     	},
 		init: function($el, options) {
-			var self = $.extend(true, {}, this);
-			self.$nav = $el.find('.bsp-carousel-nav');
-            self.$stage = $el.find('.bsp-carousel-stage');
-            self.options = $.extend(true, {}, self.defaults, options);
-            self.setInstanceId();
-            self.buildCarousels();
-            self.addEvents();
-            return self;
+			this.$nav = $el.find('.bsp-carousel-nav');
+            this.$stage = $el.find('.bsp-carousel-stage');
+            this.options = $.extend(true, {}, this.defaults, options);
+            this.setInstanceId();
+            this.buildCarousels();
+            this.addEvents();
+            return this;
 		},
         setInstanceId: function() {
             this.instanceId = (new Date()).getTime() + '-' + Math.ceil(Math.random()*100000);
@@ -48,10 +47,10 @@
                 this.options.stage.themeConfig.asNavFor = '.' + navClass;
             }
             if (this.options.stage != 'disable') {
-                this.stage = bsp_carousel.init(this.$stage, this.options.stage);
+                this.stage = Object.create(bsp_carousel).init(this.$stage, this.options.stage);
             }
             if (this.options.nav != 'disable') {
-                this.nav = bsp_carousel.init(this.$nav, this.options.nav);
+                this.nav = Object.create(bsp_carousel).init(this.$nav, this.options.nav);
             }
             if (this.options.nav != 'disable' && this.options.stage != 'disable') {
                 this.setCurrentThumbnail();
