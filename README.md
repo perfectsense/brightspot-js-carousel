@@ -155,3 +155,7 @@ Brightspot plugin which combines two carousels (one for a "stage" and one for na
         <div><img alt="" src="thumb3.jpg" /></div>
       </div>
     </div>
+
+## Misc
+
+* If you need IE8 support, your project will need [Object.create](http://stackoverflow.com/questions/18020265/object-create-not-supported-in-ie8) and [Object.bind](http://stackoverflow.com/questions/11054511/how-to-handle-lack-of-javascript-object-bind-method-in-ie-8) polyfills
