@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 						'slick': '../../bower_components/slick-carousel/slick/slick'
 					},
 					optimize: 'none',
-					out: 'dist/bsp-carousel.js',
+					out: 'dist/bsp-carousel/bsp-carousel.js',
 					wrap: true
 				}
 			}
@@ -36,10 +36,10 @@ module.exports = function(grunt) {
 		uglify: {
 			dist: {
 				files: {
-					'dist/bsp-carousel.min.js' : ['dist/bsp-carousel.js'],
-					'dist/bsp-carousel-plugin.min.js' : ['src/js/bsp-carousel-plugin.js'],
-					'dist/bsp-carousel-thumbnav.min.js' : ['src/js/bsp-carousel-thumbnav.js'],
-					'dist/bsp-carousel-thumbnav-plugin.min.js' : ['src/js/bsp-carousel-thumbnav-plugin.js']
+					'dist/bsp-carousel/bsp-carousel.min.js' : ['dist/bsp-carousel/bsp-carousel.js'],
+					'dist/bsp-carousel/bsp-carousel-plugin.min.js' : ['src/js/bsp-carousel-plugin.js'],
+					'dist/bsp-carousel-thumbnav/bsp-carousel-thumbnav.min.js' : ['src/js/bsp-carousel-thumbnav.js'],
+					'dist/bsp-carousel-thumbnav/bsp-carousel-thumbnav-plugin.min.js' : ['src/js/bsp-carousel-thumbnav-plugin.js']
 				}
 			}
 		},
@@ -54,31 +54,42 @@ module.exports = function(grunt) {
 				dest: 'build/'
 			},
 			dist: {
-				src: ['src/js/bsp-carousel-plugin.js','src/js/bsp-carousel-thumbnav.js','src/js/bsp-carousel-thumbnav-plugin.js','build/bsp-carousel.css'],
-				dest: 'dist/',
-				expand: true,
-				flatten: true
+				files: [
+					{ 'dist/bsp-carousel/bsp-carousel-plugin.js': 'src/js/bsp-carousel-plugin.js' }, 
+					{ 'dist/bsp-carousel-thumbnav/bsp-carousel-thumbnav.js': 'src/js/bsp-carousel-thumbnav.js' },
+					{ 'dist/bsp-carousel-thumbnav/bsp-carousel-thumbnav-plugin.js': 'src/js/bsp-carousel-thumbnav-plugin.js' },
+					{ 'dist/bsp-carousel/bsp-carousel.css': 'build/bsp-carousel.css' },
+					{ 'dist/bsp-carousel-gallery-plugin/bsp-carousel-gallery-plugin.css': 'build/bsp-carousel-gallery-plugin.css' },
+					{ 'dist/bsp-carousel-gallery-plugin/bsp-carousel-gallery.hbs': 'src/templates/bsp-carousel-gallery.hbs' }
+				]
 			}
 		},
 		cssUrlEmbed: {
 		  dist: {
-		    expand: true,
-		    flatten: true,
-		    src: [ 'build/less/bsp-carousel.css' ],
-		    dest: 'build'
+		  	options: {
+		  		baseDir: 'build/less/bsp-carousel' 
+		  	},
+		    files: [{
+		    	expand: true,
+			    flatten: true,
+			    src: [ 'build/less/bsp-carousel/bsp-carousel.css' ],
+			    dest: 'build'
+		    }]
 		  }
 		},
 		less: {
 			dist: {
 				files: {
-					"build/less/bsp-carousel.css": "build/less/bsp-carousel.less"
+					"build/less/bsp-carousel/bsp-carousel.css": "build/less/bsp-carousel/bsp-carousel.less",
+					"build/bsp-carousel-gallery-plugin.css": "build/less/bsp-carousel-gallery-plugin/bsp-carousel-gallery-plugin.less"
 				}
 			}
 		},
 		cssmin: {
 			dist: {
 				files: {
-					'dist/bsp-carousel.min.css' : 'build/bsp-carousel.css'
+					'dist/bsp-carousel/bsp-carousel.min.css' : 'build/bsp-carousel.css',
+					'dist/bsp-carousel-gallery-plugin/bsp-carousel-gallery-plugin.min.css' : 'build/bsp-carousel-gallery-plugin.css'
 				}
 			}
 		},
