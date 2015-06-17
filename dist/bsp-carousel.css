@@ -115,22 +115,21 @@
 
     border: 1px solid transparent;
 }
-/** base.less */
-/** slick-theme.less */
+/** bsp-carousel */
 .bsp-carousel .slick-prev,
 .bsp-carousel .slick-next {
-  height: '40px';
-  width: '40px';
+  height: 40px;
+  width: 40px;
 }
 .bsp-carousel .slick-prev:before,
 .bsp-carousel .slick-next:before {
-  font-size: '40px';
+  font-size: 40px;
 }
 .bsp-carousel .slick-prev {
-  left: '15px';
+  left: 15px;
 }
 .bsp-carousel .slick-next {
-  right: '15px';
+  right: 15px;
 }
 /*
 This is a stock slick-theme.css from slick 1.4.1 except we switch in our custom font
