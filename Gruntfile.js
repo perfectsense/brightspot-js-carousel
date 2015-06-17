@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-less');
@@ -15,7 +16,7 @@ module.exports = function(grunt) {
 	
 	grunt.registerTask('compile', ['copy:build','compilejs','compilecss','copy:dist']);
 	grunt.registerTask('compilejs', ['requirejs:dist','uglify:dist']);
-	grunt.registerTask('compilecss', ['less:dist','cssUrlEmbed:dist','cssmin:dist']);
+	grunt.registerTask('compilecss', ['concat:less','less:dist','cssUrlEmbed:dist','cssmin:dist']);
 
 	grunt.initConfig({
 		requirejs: {
@@ -66,9 +67,6 @@ module.exports = function(grunt) {
 		},
 		cssUrlEmbed: {
 		  dist: {
-		  	options: {
-		  		baseDir: 'build/less/bsp-carousel' 
-		  	},
 		    files: [{
 		    	expand: true,
 			    flatten: true,
@@ -77,11 +75,20 @@ module.exports = function(grunt) {
 		    }]
 		  }
 		},
+		concat: {
+			less: {
+				src: [
+					"build/less/variables.less",
+					"build/less/bsp-carousel-gallery-plugin/bsp-carousel-gallery-plugin.less"
+				],
+				dest: "build/less/bsp-carousel-gallery-plugin/bsp-carousel-gallery-plugin.concat.less"
+			}
+		},
 		less: {
-			dist: {
+			dist: {				
 				files: {
 					"build/less/bsp-carousel/bsp-carousel.css": "build/less/bsp-carousel/bsp-carousel.less",
-					"build/bsp-carousel-gallery-plugin.css": "build/less/bsp-carousel-gallery-plugin/bsp-carousel-gallery-plugin.less"
+					"build/bsp-carousel-gallery-plugin.css": "build/less/bsp-carousel-gallery-plugin/bsp-carousel-gallery-plugin.concat.less"
 				}
 			}
 		},
