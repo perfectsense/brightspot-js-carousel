@@ -1,0 +1,16 @@
+// base styles for all carousels
+.bsp-carousel {
+	.slick-prev, .slick-next {
+		height: @bsp-carousel-nav-size;
+		width: @bsp-carousel-nav-size;
+		&:before {
+			font-size: @bsp-carousel-nav-size;
+		}
+	}
+	.slick-prev {
+		left: @bsp-carousel-nav-margin;
+	}
+	.slick-next {
+		right: @bsp-carousel-nav-margin;
+	}
+}

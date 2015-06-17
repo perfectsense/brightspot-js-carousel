@@ -7,31 +7,21 @@ in case we want to upgrade this later.
 */
 @charset 'UTF-8';
 
-@bower-path: '../../bower_components';
-@slick-path: '@{bower-path}/slick-carousel/slick';
-@bsp-font-path: '../fonts';
-@bsp-font-name: 'bsp-carousel';
-@bsp-font-char-circle: "\2022";
-@bsp-font-char-fwd-arrow: "\f054";
-@bsp-font-char-fwd-arrow-invert: "\2192";
-@bsp-font-char-prev-arrow: "\f053";
-@bsp-font-char-prev-arrow-invert: "\2190";
-
 /* Slider */
 .slick-loading .slick-list
 {
-    background: #fff url('@{slick-path}/ajax-loader.gif') center center no-repeat;
+    background: #fff url('@{bsp-carousel-slick-path}/ajax-loader.gif') center center no-repeat;
 }
 
 /* Icons */
 @font-face
 {
-    font-family: @bsp-font-name;
+    font-family: @bsp-carousel-font-name;
     font-weight: normal;
     font-style: normal;
 
-    src: url('@{bsp-font-path}/@{bsp-font-name}.eot');
-    src: url('@{bsp-font-path}/@{bsp-font-name}.eot?#iefix') format('embedded-opentype'), url('@{bsp-font-path}/@{bsp-font-name}.woff') format('woff'), url('@{bsp-font-path}/@{bsp-font-name}.ttf') format('truetype'), url('@{bsp-font-path}/@{bsp-font-name}.svg') format('svg');
+    src: url('@{bsp-carousel-font-path}/@{bsp-carousel-font-name}.eot');
+    src: url('@{bsp-carousel-font-path}/@{bsp-carousel-font-name}.eot?#iefix') format('embedded-opentype'), url('@{bsp-carousel-font-path}/@{bsp-carousel-font-name}.woff') format('woff'), url('@{bsp-carousel-font-path}/@{bsp-carousel-font-name}.ttf') format('truetype'), url('@{bsp-carousel-font-path}/@{bsp-carousel-font-name}.svg') format('svg');
 }
 /* Arrows */
 .slick-prev,
@@ -82,7 +72,7 @@ in case we want to upgrade this later.
 .slick-prev:before,
 .slick-next:before
 {
-    font-family: @bsp-font-name;
+    font-family: @bsp-carousel-font-name;
     font-size: 20px;
     line-height: 1;
 
@@ -104,11 +94,11 @@ in case we want to upgrade this later.
 }
 .slick-prev:before
 {
-    content: @bsp-font-char-prev-arrow;
+    content: @bsp-carousel-font-char-prev-arrow;
 }
 [dir='rtl'] .slick-prev:before
 {
-    content: @bsp-font-char-fwd-arrow;
+    content: @bsp-carousel-font-char-fwd-arrow;
 }
 
 .slick-next
@@ -122,11 +112,11 @@ in case we want to upgrade this later.
 }
 .slick-next:before
 {
-    content: @bsp-font-char-fwd-arrow;
+    content: @bsp-carousel-font-char-fwd-arrow;
 }
 [dir='rtl'] .slick-next:before
 {
-    content: @bsp-font-char-prev-arrow;
+    content: @bsp-carousel-font-char-prev-arrow;
 }
 
 /* Dots */
@@ -192,7 +182,7 @@ in case we want to upgrade this later.
 }
 .slick-dots li button:before
 {
-    font-family: @bsp-font-name;
+    font-family: @bsp-carousel-font-name;
     font-size: 6px;
     line-height: 20px;
 
@@ -203,7 +193,7 @@ in case we want to upgrade this later.
     width: 20px;
     height: 20px;
 
-    content: @bsp-font-char-circle;
+    content: @bsp-carousel-font-char-circle;
     text-align: center;
 
     opacity: .25;
