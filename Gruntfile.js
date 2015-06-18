@@ -20,32 +20,39 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 
+		// build tokens
+		labelBspCarousel: 'bsp-carousel',
+		labelBspGallery: '<%= labelBspCarousel %>-gallery',
+		labelBspThumbnav: '<%= labelBspCarousel %>-thumbnav',
+		labelPluginLabel: 'plugin',
+		extHandlebars: '.hbs',
 		buildDir: 'build',
 		buildLessDir: '<%= buildDir %>/less',
-		buildBspCarouselLess: '<%= buildLessDir %>/bsp-carousel',
-		buildBspGalleryLess: '<%= buildLessDir %>/bsp-carousel-gallery-plugin',
+		buildBspCarouselLess: '<%= buildLessDir %>/<%= labelBspCarousel %>',
+		buildBspGalleryLess: '<%= buildLessDir %>/<%= labelBspGallery %>',
 		demoDir: 'demo',
 		distDir: 'dist',
-		distBspCarouselDir: '<%= distDir %>/bsp-carousel',
-		distBspGalleryDir: '<%= distDir %>/bsp-carousel-gallery-plugin',
-		distBspThumbnavDir: '<%= distDir %>/bsp-carousel-thumbnav',
+		distBspCarouselDir: '<%= distDir %>/<%= labelBspCarousel %>',
+		distBspGalleryDir: '<%= distDir %>/<%= labelBspGallery %>',
+		distBspThumbnavDir: '<%= distDir %>/<%= labelBspThumbnav %>',
 		srcDir: 'src',
 		srcFontsDir: '<%= srcDir %>/fonts',
 		srcJsDir: '<%= srcDir %>/js',
 		srcLessDir:  '<%= srcDir %>/less',
 		srcTemplatesDir:  '<%= srcDir %>/templates',
 
+		// task config
 		requirejs: {
 			dist: {
 				options: {
 					baseUrl: '<%= srcJsDir %>',
-					include: ['bsp-carousel'],
+					include: ['<%= labelBspCarousel %>'],
 					paths: {
 						'jquery': 'empty:',
 						'slick': '../../bower_components/slick-carousel/slick/slick'
 					},
 					optimize: 'none',
-					out: '<%= distBspCarouselDir %>/bsp-carousel.js',
+					out: '<%= distBspCarouselDir %>/<%= labelBspCarousel %>.js',
 					wrap: true
 				}
 			}
@@ -53,10 +60,10 @@ module.exports = function(grunt) {
 		uglify: {
 			dist: {
 				files: {
-					'<%= distBspCarouselDir %>/bsp-carousel.min.js' : ['<%= distBspCarouselDir %>/bsp-carousel.js'],
-					'<%= distBspCarouselDir %>/bsp-carousel-plugin.min.js' : ['<%= srcJsDir %>/bsp-carousel-plugin.js'],
-					'<%= distBspThumbnavDir %>/bsp-carousel-thumbnav.min.js' : ['<%= srcJsDir %>/bsp-carousel-thumbnav.js'],
-					'<%= distBspThumbnavDir %>/bsp-carousel-thumbnav-plugin.min.js' : ['<%= srcJsDir %>/bsp-carousel-thumbnav-plugin.js']
+					'<%= distBspCarouselDir %>/<%= labelBspCarousel %>.min.js' : ['<%= distBspCarouselDir %>/<%= labelBspCarousel %>.js'],
+					'<%= distBspCarouselDir %>/<%= labelBspCarousel %>-<%= labelPluginLabel %>.min.js' : ['<%= srcJsDir %>/<%= labelBspCarousel %>-<%= labelPluginLabel %>.js'],
+					'<%= distBspThumbnavDir %>/<%= labelBspThumbnav %>.min.js' : ['<%= srcJsDir %>/<%= labelBspThumbnav %>.js'],
+					'<%= distBspThumbnavDir %>/<%= labelBspThumbnav %>-<%= labelPluginLabel %>.min.js' : ['<%= srcJsDir %>/<%= labelBspThumbnav %>-<%= labelPluginLabel %>.js']
 				}
 			}
 		},
@@ -72,12 +79,30 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: [
-					{ '<%= distBspCarouselDir %>/bsp-carousel-plugin.js': '<%= srcJsDir %>/bsp-carousel-plugin.js' }, 
-					{ '<%= distBspThumbnavDir %>/bsp-carousel-thumbnav.js': '<%= srcJsDir %>/bsp-carousel-thumbnav.js' },
-					{ '<%= distBspThumbnavDir %>/bsp-carousel-thumbnav-plugin.js': '<%= srcJsDir %>/bsp-carousel-thumbnav-plugin.js' },
-					{ '<%= distBspCarouselDir %>/bsp-carousel.css': '<%= buildDir %>/bsp-carousel.css' },
-					{ '<%= distBspGalleryDir %>/bsp-carousel-gallery-plugin.css': '<%= buildDir %>/bsp-carousel-gallery-plugin.css' },
-					{ '<%= distBspGalleryDir %>/bsp-carousel-gallery.hbs': '<%= srcTemplatesDir %>/bsp-carousel-gallery.hbs' }
+					{
+						'<%= distBspCarouselDir %>/<%= labelBspCarousel %>-<%= labelPluginLabel %>.js':
+						'<%= srcJsDir %>/<%= labelBspCarousel %>-<%= labelPluginLabel %>.js'
+					}, 
+					{
+						'<%= distBspThumbnavDir %>/<%= labelBspThumbnav %>.js':
+						'<%= srcJsDir %>/<%= labelBspThumbnav %>.js'
+					},
+					{
+						'<%= distBspThumbnavDir %>/<%= labelBspThumbnav %>-<%= labelPluginLabel %>.js':
+						'<%= srcJsDir %>/<%= labelBspThumbnav %>-<%= labelPluginLabel %>.js'
+					},
+					{
+						'<%= distBspCarouselDir %>/<%= labelBspCarousel %>.css':
+						'<%= buildDir %>/<%= labelBspCarousel %>.css'
+					},
+					{
+						'<%= distBspGalleryDir %>/<%= labelBspGallery %>-<%= labelPluginLabel %>.css':
+						'<%= buildDir %>/<%= labelBspGallery %>-<%= labelPluginLabel %>.css'
+					},
+					{
+						'<%= distBspGalleryDir %>/<%= labelBspGallery %><%= extHandlebars %>':
+						'<%= srcTemplatesDir %>/<%= labelBspGallery %><%= extHandlebars %>'
+					}
 				]
 			}
 		},
@@ -86,7 +111,7 @@ module.exports = function(grunt) {
 		    files: [{
 		    	expand: true,
 			    flatten: true,
-			    src: [ '<%= buildBspCarouselLess %>/bsp-carousel.css' ],
+			    src: [ '<%= buildBspCarouselLess %>/<%= labelBspCarousel %>.css' ],
 			    dest: '<%= buildDir %>'
 		    }]
 		  }
@@ -95,31 +120,46 @@ module.exports = function(grunt) {
 			less: {
 				src: [
 					"<%= buildLessDir %>/variables.less",
-					"<%= buildBspGalleryLess %>/bsp-carousel-gallery-plugin.less"
+					"<%= buildBspGalleryLess %>/<%= labelBspGallery %>.less"
 				],
-				dest: "<%= buildBspGalleryLess %>/bsp-carousel-gallery-plugin.concat.less"
+				dest: "<%= buildBspGalleryLess %>/<%= labelBspGallery %>.concat.less"
 			}
 		},
 		less: {
 			dist: {				
-				files: {
-					"<%= buildBspCarouselLess %>/bsp-carousel.css": "<%= buildBspCarouselLess %>/bsp-carousel.less",
-					"<%= buildDir %>/bsp-carousel-gallery-plugin.css": "<%= buildBspGalleryLess %>/bsp-carousel-gallery-plugin.concat.less"
-				}
+				files: [
+					{
+						"<%= buildBspCarouselLess %>/<%= labelBspCarousel %>.css":
+						"<%= buildBspCarouselLess %>/<%= labelBspCarousel %>.less"
+					},
+					{
+						"<%= buildDir %>/<%= labelBspGallery %>.css":
+						"<%= buildBspGalleryLess %>/<%= labelBspGallery %>.concat.less"
+					}
+				]
 			}
 		},
 		cssmin: {
 			dist: {
-				files: {
-					'<%= distBspCarouselDir %>/bsp-carousel.min.css' : '<%= buildDir %>/bsp-carousel.css',
-					'<%= distBspGalleryDir %>/bsp-carousel-gallery-plugin.min.css' : '<%= buildDir %>/bsp-carousel-gallery-plugin.css'
-				}
+				files: [
+					{
+						'<%= distBspCarouselDir %>/<%= labelBspCarousel %>.min.css':
+						'<%= buildDir %>/<%= labelBspCarousel %>.css'
+					},
+					{
+						'<%= distBspGalleryDir %>/<%= labelBspGallery %>.min.css':
+						'<%= buildDir %>/<%= labelBspGallery %>.css'
+					}
+				]
 			}
 		},
 		clean: ['build'],
 		watch: {
 			src: {
-				files: ['<%= srcDir %>/**/*','demo/**/*'],
+				files: [
+					'<%= srcDir %>/**/*',
+					'<%= demoDir %>/**/*'
+				],
 				tasks: ['default']
 			}
 		}
