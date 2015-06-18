@@ -96,8 +96,8 @@ module.exports = function(grunt) {
 						'<%= buildDir %>/<%= labelBspCarousel %>.css'
 					},
 					{
-						'<%= distBspGalleryDir %>/<%= labelBspGallery %>-<%= labelPluginLabel %>.css':
-						'<%= buildDir %>/<%= labelBspGallery %>-<%= labelPluginLabel %>.css'
+						'<%= distBspGalleryDir %>/<%= labelBspGallery %>.css':
+						'<%= buildDir %>/<%= labelBspGallery %>.css'
 					},
 					{
 						'<%= distBspGalleryDir %>/<%= labelBspGallery %><%= extHandlebars %>':
