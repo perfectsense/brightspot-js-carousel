@@ -10,11 +10,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-css-url-embed');
+	grunt.loadNpmTasks("grunt-bower-install-simple");
 
 	grunt.registerTask('default', ['compile']);
 	grunt.registerTask('test', ['jshint:all']);
 	
-	grunt.registerTask('compile', ['copy:build','compilejs','compilecss','copy:dist']);
+	grunt.registerTask('compile', ['bower-install-simple','copy:build','compilejs','compilecss','copy:dist']);
 	grunt.registerTask('compilejs', ['requirejs:dist','uglify:dist']);
 	grunt.registerTask('compilecss', ['concat:less','less:dist','cssUrlEmbed:dist','cssmin:dist']);
 
@@ -42,6 +43,14 @@ module.exports = function(grunt) {
 		srcTemplatesDir:  '<%= srcDir %>/templates',
 
 		// task config
+		"bower-install-simple": {
+			options: {
+				directory: "<%= buildDir %>"
+			},
+			dev: {
+				production: true
+			}
+		},
 		requirejs: {
 			dist: {
 				options: {
