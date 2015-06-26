@@ -1,8 +1,8 @@
-import bsp_carousel from 'bsp-carousel';
+import { bsp_carousel } from 'bsp-carousel';
 
 export default {
-	defaults: {
-		nav: {
+    defaults: {
+        nav: {
             themeConfig: {
                 centerMode: true,
                 centerPadding: '0px',
@@ -16,16 +16,16 @@ export default {
                 arrows: false
             }
         }
-	},
-	init: function($el, options) {
-		this.$nav = $el.find('.bsp-carousel-nav');
+    },
+    init: function($el, options) {
+        this.$nav = $el.find('.bsp-carousel-nav');
         this.$stage = $el.find('.bsp-carousel-stage');
         this.options = $.extend(true, {}, this.defaults, options);
         this.setInstanceId();
         this.buildCarousels();
         this.addEvents();
         return this;
-	},
+    },
     setInstanceId: function() {
         this.instanceId = (new Date()).getTime() + '-' + Math.ceil(Math.random()*100000);
     },
@@ -67,4 +67,3 @@ export default {
         });
     }
 };
-
