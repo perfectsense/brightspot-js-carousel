@@ -1,6 +1,6 @@
 # brightspot-js-carousel
 
-> **IMPORTANT: The 0.1.0 upgrade changes the init function in an important way.** Previously, Object.create was run in the init function. This was breaking IE8 if a polyfill for Object.create wasn't loaded. So it has now been changed to follow the more common bsp utility pattern where you are expected to manually invoke Object.create in whatever plugin you write.
+NOTE: Starting with 1.0.0, bsp-carousel is an [ECMAScript 6 module](http://www.2ality.com/2014/09/es6-modules-final.html) instead of a [RequireJS module](http://requirejs.org/). If you need an AMD version, work in the 0.x.x branch.
 
 Front end abstraction for [slick carousel](http://kenwheeler.github.io/slick/). Provides a utility with pre-bundled themes and Brightspot plugins to instantiate the utility.
 
