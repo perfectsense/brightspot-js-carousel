@@ -179,4 +179,4 @@ var bsp_carousel = {};
     };
 })();
 
-export { bsp_carousel };
+export default bsp_carousel;

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import bsp_utils from 'bsp-utils';
-import { bsp_carousel } from 'bsp-carousel';
+import bsp_carousel from 'bsp-carousel';
 
 export default bsp_utils.plugin(false, 'bsp', 'carousel', {
     '_each': function(item) {

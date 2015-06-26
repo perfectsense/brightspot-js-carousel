@@ -1,4 +1,4 @@
-import { bsp_carousel } from 'bsp-carousel';
+import bsp_carousel from 'bsp-carousel';
 
 export default {
     defaults: {
