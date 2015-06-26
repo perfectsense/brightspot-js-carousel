@@ -1,7 +1,6 @@
 System.config({
   defaultJSExtensions: true,
   map: {
-  	'jquery': 'jquery/dist/jquery',
     'slick': 'slick-carousel/slick/slick'
   },
   meta: {

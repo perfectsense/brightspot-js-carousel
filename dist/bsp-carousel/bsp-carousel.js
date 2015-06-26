@@ -610,7 +610,7 @@ var _removeDefine = System.get("@@amd-helpers").createDefine();
 (function(factory) {
   'use strict';
   if (typeof define === 'function' && define.amd) {
-    define("slick-carousel/slick/slick.js", ["jquery/dist/jquery.js"], factory);
+    define("slick-carousel/slick/slick.js", ["jquery.js"], factory);
   } else if (typeof exports !== 'undefined') {
     module.exports = factory(require('jquery'));
   } else {
@@ -2242,13 +2242,13 @@ var _removeDefine = System.get("@@amd-helpers").createDefine();
 
 _removeDefine();
 })();
-System.register('bsp-carousel.js', ['jquery/dist/jquery.js', 'slick-carousel/slick/slick.js'], function (_export) {
+System.register('bsp-carousel.js', ['jquery.js', 'slick-carousel/slick/slick.js'], function (_export) {
 	'use strict';
 
 	var $, slick, bsp_carousel;
 	return {
-		setters: [function (_jqueryDistJqueryJs) {
-			$ = _jqueryDistJqueryJs['default'];
+		setters: [function (_jqueryJs) {
+			$ = _jqueryJs['default'];
 		}, function (_slickCarouselSlickSlickJs) {
 			slick = _slickCarouselSlickSlickJs['default'];
 		}],
