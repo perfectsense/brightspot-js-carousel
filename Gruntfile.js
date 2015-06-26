@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['compile']);
 	grunt.registerTask('test', ['jshint:all']);
 	
-	grunt.registerTask('compile', ['bower-install-simple','copy:build','compilejs','compilecss','copy:dist']);
+	grunt.registerTask('compile', ['bower-install-simple','copy:build','compilecss','copy:dist']);
 
 	// uglify no-likey es6 right now
 	// https://github.com/mishoo/UglifyJS2/issues/659
@@ -105,6 +105,14 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: [
+					{
+						'<%= distBspCarouselDir %>/slick.js':
+						'bower_components/slick-carousel/slick/slick.js'
+					},
+					{
+						'<%= distBspCarouselDir %>/<%= labelBspCarousel %>.js':
+						'<%= srcJsDir %>/<%= labelBspCarousel %>.js'
+					},
 					{
 						'<%= distBspCarouselDir %>/<%= labelBspCarousel %>-<%= labelPluginLabel %>.js':
 						'<%= srcJsDir %>/<%= labelBspCarousel %>-<%= labelPluginLabel %>.js'
