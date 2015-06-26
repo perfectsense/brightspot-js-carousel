@@ -2437,5 +2437,7 @@ System.register('bsp-carousel.js', ['jquery/dist/jquery.js', 'slick-carousel/sli
 });
 })
 (function(factory) {
-  factory();
+  main = factory();
 });
+
+export default main;

@@ -20,10 +20,11 @@ module.exports = function(grunt) {
 	grunt.registerTask('test', ['jshint:all']);
 	
 	grunt.registerTask('compile', ['bower-install-simple','copy:build','compilejs','compilecss','copy:dist']);
-	grunt.registerTask('compilejs', ['systemjs']);
 
 	// uglify no-likey es6 right now
-	//grunt.registerTask('compilejs', ['systemjs','uglify:dist']);
+	// https://github.com/mishoo/UglifyJS2/issues/659
+	// grunt.registerTask('compilejs', ['systemjs','uglify:dist']);
+	grunt.registerTask('compilejs', ['systemjs']);
 	
 	grunt.registerTask('compilecss', ['concat:less','less:dist','cssUrlEmbed:dist','cssmin:dist']);
 
@@ -66,25 +67,22 @@ module.exports = function(grunt) {
 					configFile: '<%= buildJsDir %>/config.js',
 					configOverrides: {
 						minify: false,
+						sfxFormat: 'es6',
 						sourceMaps: false
 					}
 				},
 				files: [
 					{ '<%= distBspCarouselDir %>/<%= labelBspCarousel %>.js': '<%= buildJsDir %>/<%= labelBspCarousel %>.js' }
 				]
-			},
-			distmin: {
-				options: {
-					configFile: '<%= buildJsDir %>/config.js',
-				},
-				files: [
-					{ '<%= distBspCarouselDir %>/<%= labelBspCarousel %>.min.js': '<%= buildJsDir %>/<%= labelBspCarousel %>.js' }
-				]
 			}
 		},
 		uglify: {
 			dist: {
+				options: {
+					sourceMap: true
+				},
 				files: {
+					'<%= distBspCarouselDir %>/<%= labelBspCarousel %>.min.js' : ['<%= srcJsDir %>/<%= labelBspCarousel %>.js'],
 					'<%= distBspCarouselDir %>/<%= labelBspCarousel %>-<%= labelPluginLabel %>.min.js' : ['<%= srcJsDir %>/<%= labelBspCarousel %>-<%= labelPluginLabel %>.js'],
 					'<%= distBspThumbnavDir %>/<%= labelBspThumbnav %>.min.js' : ['<%= srcJsDir %>/<%= labelBspThumbnav %>.js'],
 					'<%= distBspThumbnavDir %>/<%= labelBspThumbnav %>-<%= labelPluginLabel %>.min.js' : ['<%= srcJsDir %>/<%= labelBspThumbnav %>-<%= labelPluginLabel %>.js']
