@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import slick from './slick';
+import slick from 'slick';
 
 var bsp_carousel = {};
 
