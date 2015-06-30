@@ -208,8 +208,109 @@ describe('bsp-carousel utility', () => {
 		});
 	});
 
-	describe('slickMethod specs', () => {
-		// to be done
+	describe('slick method specs', () => {
+
+		var carousel;
+
+		beforeEach(() => {
+			carousel = Object.create(bsp_carousel);
+		});
+
+		describe('slick methods unavailable', () => {
+			it('should return undefined if first arg is not getSlick', () => {
+				expect( carousel._slickMethod('test') ).toBeUndefined();
+			});
+		});
+
+		describe('slick methods available', () => {
+
+			var $el;
+
+			beforeEach(() => {
+				$el = $('<div></div>');
+				carousel.$el = $el;
+				spyOn(carousel, '_slickMethodsAvailable').and.returnValue(true);
+				spyOn(carousel, '_slickMethod').and.callThrough();
+			});
+
+			describe('slick methods with return values', () => {
+				it('should return expected value from the currentSlide method', () => {
+					spyOn(carousel.$el, 'slick').and.returnValue(1);
+					expect( carousel.currentSlide() ).toEqual(1);
+				});
+				it('should return expected value from the getOption method', () => {
+					spyOn(carousel.$el, 'slick').and.returnValue(1);
+					expect( carousel.getOption('test') ).toEqual(1);
+				});
+				it('should return expected value from the slideCount method', () => {
+					spyOn(carousel.$el, 'slick').and.returnValue({
+						slideCount: 1
+					});
+					expect( carousel.slideCount() ).toEqual(1);
+				});
+			});
+
+			describe('slick methods without return values', () => {
+				beforeEach(() => {
+					spyOn($el, 'slick');
+				});
+
+				it('should return undefined', () => {
+					expect(carousel.goTo()).toBeUndefined();
+					expect(carousel.next()).toBeUndefined();
+					expect(carousel.prev()).toBeUndefined();
+					expect(carousel.pause()).toBeUndefined();
+					expect(carousel.play()).toBeUndefined();
+					expect(carousel.add()).toBeUndefined();
+					expect(carousel.remove()).toBeUndefined();
+					expect(carousel.filter()).toBeUndefined();
+					expect(carousel.unfilter()).toBeUndefined();
+					expect(carousel.setOption()).toBeUndefined();
+					expect(carousel.destroy()).toBeUndefined();
+				});
+
+				it('should call _slickMethod with expected args', () => {
+					carousel.currentSlide();
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickCurrentSlide');
+
+					carousel.goTo(1);
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickGoTo', 1);
+
+					carousel.next();
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickNext');
+
+					carousel.prev();
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickPrev');
+
+					carousel.pause();
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickPause');
+
+					carousel.play();
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickPlay');
+
+					carousel.add('<div></div>', 1, 1);
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickAdd', '<div></div>', 1, 1);
+
+					carousel.remove(1, 1);
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickRemove', 1, 1);
+
+					carousel.filter('#test');
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickFilter', '#test');
+
+					carousel.unfilter(1);
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickUnfilter', 1);
+
+					carousel.setOption('test', 1);
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('slickSetOption', 'test', 1);
+
+					carousel.destroy();
+					expect( carousel._slickMethod ).toHaveBeenCalledWith('unslick');
+				});
+			});
+
+			
+		});
+
 	});
 	
 });
