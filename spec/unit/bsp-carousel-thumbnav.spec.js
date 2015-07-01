@@ -87,5 +87,22 @@ describe('bsp-carousel-thumbnav utility', () => {
     		expect(carousel.setInstanceId).toHaveBeenCalled();
     	});
     });
+
+	describe('setInstanceId specs', () => {
+		var carousel;
+
+		beforeEach(() => {
+			carousel = Object.create(bsp_carousel_thumbnav);
+		});
+
+		it('should set instance id to the expected value', () => {
+			spyOn(window, 'Date').and.returnValue({
+				getTime: () => { return 1; }
+			});
+			spyOn(Math, 'random').and.returnValue(0.111111);
+			carousel.setInstanceId();
+			expect(carousel.instanceId).toBe('1-11112');
+		});
+	});
 });
 
