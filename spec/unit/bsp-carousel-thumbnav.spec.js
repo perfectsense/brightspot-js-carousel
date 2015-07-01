@@ -104,5 +104,27 @@ describe('bsp-carousel-thumbnav utility', () => {
 			expect(carousel.instanceId).toBe('1-11112');
 		});
 	});
+
+	describe('addEvents specs', () => {
+		var carousel;
+
+		beforeEach(() => {
+			carousel = Object.create(bsp_carousel_thumbnav);
+		});
+
+		it('should bind expected events', () => {
+			var cb;
+			spyOn(carousel, 'setCurrentThumbnail');
+			carousel.stage = {
+				bind: jasmine.createSpy().and.callFake((eventName, callback) => {
+					cb = callback;
+				})
+			};
+			carousel.addEvents();
+			expect(carousel.stage.bind).toHaveBeenCalledWith('carousel:afterChange', jasmine.any(Function));
+			cb();
+			expect(carousel.setCurrentThumbnail).toHaveBeenCalled();
+		});
+	});
 });
 
