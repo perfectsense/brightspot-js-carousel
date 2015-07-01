@@ -9,10 +9,12 @@ module.exports = function(config) {
 	var files = [];
 	var nodeDir = '/base/node_modules';
 	var bowerDir = '/base/bower_components';
+	var srcDir = '/base/src/js';
 	var paths = {
 		'babel': nodeDir + '/babel-core/browser.js',
 		'jquery': bowerDir + '/jquery/dist/jquery.js',
 		'bsp-utils': bowerDir + '/bsp-utils/bsp-utils.js',
+		'bsp-carousel': srcDir + '/bsp-carousel.js',
 		'slick': bowerDir + '/slick-carousel/slick/slick.js'
 	};
 	_.map(paths, function(val) {
