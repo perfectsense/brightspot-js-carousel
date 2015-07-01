@@ -312,5 +312,58 @@ describe('bsp-carousel utility', () => {
 		});
 
 	});
+
+	describe('slick methods available specs', () => {
+		var $el;
+		var carousel;
+
+		beforeEach(() => {
+			$el = $('<div></div>');
+			carousel = Object.create(bsp_carousel);
+			carousel.$el = $el;
+		});
+
+		it('should return undefined before _slickMethodsFound is set', () => {
+			expect(carousel._slickMethodsAvailable()).toBeUndefined();
+		});
+
+		it('should return true when _slickMethodsFound is true', () => {
+			carousel._slickMethodsFound = true;
+			expect(carousel._slickMethodsAvailable()).toBe(true);
+		});
+
+		it('should set _slickMethodsFound to true if slick methods are present', () => {
+			spyOn($el, 'slick');
+			expect(carousel._slickMethodsAvailable()).toBe(true);
+		});
+	});
+
+	describe('slick method available promise specs', () => {
+		var $el;
+		var carousel;
+
+		beforeEach(() => {
+			$el = $('<div></div>');
+			carousel = Object.create(bsp_carousel);
+			carousel.$el = $el;
+		});
+
+		it('should resolve a promise when _slickMethodsAvailable returns true', (done) => {
+			spyOn(carousel, '_slickMethodsAvailable').and.returnValue(true);
+			carousel._createSlickMethodsAvailablePromise();
+			carousel._slickMethodsAvailablePromise.done(() => {
+				done();
+			});
+		});
+
+		it('should fail after at least ten checks without resolving the promise', (done) => {
+			spyOn(carousel, '_slickMethodsAvailable').and.returnValue(false);
+			carousel._createSlickMethodsAvailablePromise();
+			carousel._slickMethodsAvailablePromise.fail(() => {
+				expect(carousel._slickMethodsAvailable.calls.count()).toBeGreaterThan(10);
+				done();
+			});
+		});
+	});
 	
 });
