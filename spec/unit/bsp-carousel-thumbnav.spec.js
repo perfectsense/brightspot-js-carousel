@@ -26,10 +26,18 @@ describe('bsp-carousel-thumbnav utility', () => {
     var selectorNav = '.' + classNav;
     var selectorStage = '.' + classStage;
 
-    var fixture = 
+    var fixture1 = 
     	`<div>
-    		<div class="${classStage}"></div>
-    		<div class="${classNav}"></div>
+    		<div class="${classStage}">
+    			<div class="slick-slide" data-slick-index="1">stage 1</div>
+    			<div class="slick-slide" data-slick-index="2">stage 2</div>
+    			<div class="slick-slide" data-slick-index="3">stage 3</div>
+    		</div>
+    		<div class="${classNav}">
+    			<div class="slick-slide" data-slick-index="1">nav 1</div>
+    			<div class="slick-slide" data-slick-index="2">nav 2</div>
+    			<div class="slick-slide" data-slick-index="3">nav 3</div>
+    		</div>
     	</div>`;
 
     describe('config specs', () => {
@@ -45,7 +53,7 @@ describe('bsp-carousel-thumbnav utility', () => {
     	var carousel;
 
     	beforeEach(() => {
-    		$el = $(fixture);
+    		$el = $(fixture1);
     		$nav = $el.find(selectorNav);
     		$stage = $el.find(selectorStage);
     		carousel = Object.create(bsp_carousel_thumbnav);
@@ -124,6 +132,28 @@ describe('bsp-carousel-thumbnav utility', () => {
 			expect(carousel.stage.bind).toHaveBeenCalledWith('carousel:afterChange', jasmine.any(Function));
 			cb();
 			expect(carousel.setCurrentThumbnail).toHaveBeenCalled();
+		});
+	});
+
+	describe('setCurrentThumbnail specs', () => {
+		var $el;
+    	var $nav;
+    	var $stage;
+    	var carousel;
+
+    	beforeEach(() => {
+    		$el = $(fixture1);
+    		carousel = Object.create(bsp_carousel_thumbnav);
+    		carousel.$nav = $el.find(selectorNav);
+    		carousel.$stage = $el.find(selectorStage);
+    	});
+
+		it('should remove current from nav slide when stage index does not match, set current to matching index', () => {
+			carousel.$stage.find('[data-slick-index=1]').addClass('slick-active');
+			carousel.$nav.find('[data-slick-index=2]').addClass('current');
+			carousel.setCurrentThumbnail();
+			expect(carousel.$nav.find('[data-slick-index=1]').hasClass('current')).toBe(true);
+			expect(carousel.$nav.find('[data-slick-index=2]').hasClass('current')).toBe(false);
 		});
 	});
 });
