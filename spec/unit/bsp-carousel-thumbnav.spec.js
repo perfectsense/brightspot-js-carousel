@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import bsp_carousel from '../../src/js/bsp-carousel';
 import bsp_carousel_thumbnav from '../../src/js/bsp-carousel-thumbnav';
 
 describe('bsp-carousel-thumbnav utility', () => {
@@ -154,6 +155,125 @@ describe('bsp-carousel-thumbnav utility', () => {
 			carousel.setCurrentThumbnail();
 			expect(carousel.$nav.find('[data-slick-index=1]').hasClass('current')).toBe(true);
 			expect(carousel.$nav.find('[data-slick-index=2]').hasClass('current')).toBe(false);
+		});
+	});
+
+	describe('buildCarousels specs', () => {
+		var $el;
+    	var $nav;
+    	var $stage;
+    	var carousel;
+
+    	beforeEach(() => {
+    		$el = $(fixture1);
+    		carousel = Object.create(bsp_carousel_thumbnav);
+    		carousel.$nav = $el.find(selectorNav);
+    		carousel.$stage = $el.find(selectorStage);
+    		carousel.instanceId = 'fake-id';
+    		carousel.options = {
+				nav: {
+					themeConfig: {}
+				},
+				stage: {
+					themeConfig: {}
+				}
+			};
+    	});
+
+		it('should add expected classes to nav and stage elements when options are empty', () => {
+			carousel.buildCarousels();
+			expect(carousel.$nav.hasClass('bsp-carousel-nav-fake-id')).toBe(true);
+			expect(carousel.$stage.hasClass('bsp-carousel-stage-fake-id')).toBe(true);
+		});
+
+		it('should set asNavFor option to expected values when options are empty', () => {
+			carousel.buildCarousels();
+			expect(carousel.options.nav.themeConfig.asNavFor).toBe('.bsp-carousel-stage-fake-id');
+			expect(carousel.options.stage.themeConfig.asNavFor).toBe('.bsp-carousel-nav-fake-id');
+		});
+
+		it('should not add classes if nav is set to disable', () => {
+			carousel.options.nav = 'disable';
+			carousel.buildCarousels();
+			expect(carousel.$nav.hasClass('bsp-carousel-nav-fake-id')).toBe(false);
+			expect(carousel.$stage.hasClass('bsp-carousel-stage-fake-id')).toBe(false);
+		});
+
+		it('should not set asNavFor if nav is set to disable', () => {
+			carousel.options.nav = 'disable';
+			carousel.buildCarousels();
+			expect(carousel.options.stage.themeConfig.asNavFor).toBeUndefined();
+		});
+
+		it('should not add classes if stage is set to disable', () => {
+			carousel.options.stage = 'disable';
+			carousel.buildCarousels();
+			expect(carousel.$nav.hasClass('bsp-carousel-nav-fake-id')).toBe(false);
+			expect(carousel.$stage.hasClass('bsp-carousel-stage-fake-id')).toBe(false);
+		});
+
+		it('should not set asNavFor if stage is set to disable', () => {
+			carousel.options.stage = 'disable';
+			carousel.buildCarousels();
+			expect(carousel.options.nav.themeConfig.asNavFor).toBeUndefined();
+		});
+
+		it('should not add classes if disableAsNavFor is set', () => {
+			carousel.options.disableAsNavFor = true;
+			carousel.buildCarousels();
+			expect(carousel.$nav.hasClass('bsp-carousel-nav-fake-id')).toBe(false);
+			expect(carousel.$stage.hasClass('bsp-carousel-stage-fake-id')).toBe(false);
+		});
+
+		it('should not set asNavFor if disableAsNavFor is set', () => {
+			carousel.options.disableAsNavFor = true;
+			carousel.buildCarousels();
+			expect(carousel.options.nav.themeConfig.asNavFor).toBeUndefined();
+			expect(carousel.options.stage.themeConfig.asNavFor).toBeUndefined();
+		});
+
+		it('should create the nav and stage objects if nav and stage are not set to disable', () => {
+			spyOn(Object, 'create').and.callThrough();
+			spyOn(bsp_carousel, 'init').and.callThrough();
+			carousel.buildCarousels();
+			expect(Object.create).toHaveBeenCalledWith(bsp_carousel);
+			expect(Object.create.calls.count()).toBe(2);
+			expect(bsp_carousel.init).toHaveBeenCalledWith(carousel.$stage, carousel.options.stage);
+			expect(bsp_carousel.init).toHaveBeenCalledWith(carousel.$nav, carousel.options.nav);
+		});
+
+		it('should not create the nav object if nav is set to disable', () => {
+			spyOn(bsp_carousel, 'init').and.callThrough();
+			carousel.options.nav = 'disable';
+			carousel.buildCarousels();
+			expect(bsp_carousel.init).not.toHaveBeenCalledWith(carousel.$nav, carousel.options.nav);
+		});
+
+		it('should not create the stage object if stage is set to disable', () => {
+			spyOn(bsp_carousel, 'init').and.callThrough();
+			carousel.options.stage = 'disable';
+			carousel.buildCarousels();
+			expect(bsp_carousel.init).not.toHaveBeenCalledWith(carousel.$stage, carousel.options.stage);
+		});
+
+		it('should set thumbnail if stage and nav are not disabled', () => {
+			spyOn(carousel, 'setCurrentThumbnail');
+			carousel.buildCarousels();
+			expect(carousel.setCurrentThumbnail).toHaveBeenCalled();
+		});
+
+		it('should not set thumbnail if nav is disabled', () => {
+			carousel.options.nav = 'disable';
+			spyOn(carousel, 'setCurrentThumbnail');
+			carousel.buildCarousels();
+			expect(carousel.setCurrentThumbnail).not.toHaveBeenCalled();
+		});
+
+		it('should not set thumbnail if stage is disabled', () => {
+			carousel.options.stage = 'disable';
+			spyOn(carousel, 'setCurrentThumbnail');
+			carousel.buildCarousels();
+			expect(carousel.setCurrentThumbnail).not.toHaveBeenCalled();
 		});
 	});
 });
