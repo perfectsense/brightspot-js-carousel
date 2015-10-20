@@ -115,6 +115,15 @@
 
     border: 1px solid transparent;
 }
+.slick-slider {
+  margin-bottom: 0px;
+}
+.slick-slider.carousel-dots {
+  margin-bottom: 30px;
+}
+.slick-dots {
+  bottom: -30px;
+}
 .bsp-carousel .slick-prev,
 .bsp-carousel .slick-next {
   height: 40px;
@@ -129,6 +138,37 @@
 }
 .bsp-carousel .slick-next {
   right: 15px;
+}
+.bsp-carousel-slide {
+  display: none;
+}
+.bsp-carousel-slide:first-of-type {
+  display: block;
+}
+.slick-initialized .bsp-carousel-slide {
+  display: block;
+}
+.bsp-carousel-slide img {
+  height: auto;
+  width: 100%;
+}
+.bsp-carousel-nav {
+  display: none;
+}
+@media only screen and (min-width: 992px) {
+  .bsp-carousel-stage.carousel-dots {
+    margin-bottom: 0;
+  }
+  .bsp-carousel-stage.carousel-dots .slick-dots {
+    display: none;
+  }
+  .bsp-carousel-stage .slick-prev,
+  .bsp-carousel-stage .slick-next {
+    display: none !important;
+  }
+  .bsp-carousel-nav.slick-initialized {
+    display: block;
+  }
 }
 /*
 This is a stock slick-theme.css from slick 1.4.1 except we switch in our custom font

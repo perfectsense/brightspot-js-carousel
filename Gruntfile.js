@@ -136,6 +136,14 @@ module.exports = function(grunt) {
 					{
 						'<%= distBspGalleryDir %>/<%= labelBspGallery %><%= extHandlebars %>':
 						'<%= srcTemplatesDir %>/<%= labelBspGallery %><%= extHandlebars %>'
+					},
+					{
+						'<%= distBspGalleryDir %>/<%= labelBspGallery %>.js':
+						'<%= srcJsDir %>/<%= labelBspGallery %>.js'
+					},
+					{
+						'<%= distBspGalleryDir %>/<%= labelBspGallery %>-<%= labelPluginLabel %>.js':
+						'<%= srcJsDir %>/<%= labelBspGallery %>-<%= labelPluginLabel %>.js'
 					}
 				]
 			}
