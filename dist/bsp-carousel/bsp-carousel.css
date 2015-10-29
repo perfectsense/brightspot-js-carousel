@@ -124,6 +124,26 @@
 .slick-dots {
   bottom: -30px;
 }
+.bsp-carousel-slide {
+  display: none;
+}
+.bsp-carousel-slide:first-of-type {
+  display: block;
+}
+.slick-initialized .bsp-carousel-slide {
+  display: block;
+}
+.bsp-carousel-slide img {
+  height: auto;
+  width: 100%;
+}
+.bsp-carousel-nav {
+  display: none;
+}
+.bsp-carousel.nav-hide .slick-prev,
+.bsp-carousel.nav-hide .slick-next {
+  display: none !important;
+}
 .bsp-carousel .slick-prev,
 .bsp-carousel .slick-next {
   height: 40px;
@@ -132,6 +152,14 @@
 .bsp-carousel .slick-prev:before,
 .bsp-carousel .slick-next:before {
   font-size: 40px;
+}
+.bsp-carousel .slick-prev.slick-disabled,
+.bsp-carousel .slick-next.slick-disabled {
+  opacity: 0.4;
+}
+.bsp-carousel .slick-prev.slick-disabled:before,
+.bsp-carousel .slick-next.slick-disabled:before {
+  opacity: 0.4;
 }
 .bsp-carousel .slick-prev {
   left: 15px;
