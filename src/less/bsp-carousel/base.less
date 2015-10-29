@@ -1,6 +1,5 @@
 // base styles for all carousels
 
-
 // default carousel should have 0 px of bottom margin. Overriding slick's default here
 .slick-slider {
 	margin-bottom: 0px;
@@ -40,7 +39,6 @@
 	display: none;
 }
 
-
 .bsp-carousel {
 
 	 &.nav-hide {
@@ -52,9 +50,11 @@
 	.slick-prev, .slick-next {
 		height: @bsp-carousel-nav-size;
 		width: @bsp-carousel-nav-size;
+
 		&:before {
 			font-size: @bsp-carousel-nav-size;
 		}
+
 		&.slick-disabled {
             opacity: 0.4;
             &:before {
@@ -68,58 +68,6 @@
 	}
 	.slick-next {
 		right: @bsp-carousel-nav-margin;
-	}
-
-}
-
-// prevents the fouc until carousel inits
-.bsp-carousel-slide {
-	display: none;
-
-	&:first-of-type {
-		display: block;
-	}
-
-	.slick-initialized & {
-		display: block;
-	}
-
-	// by default slide images are 100% of their container.
-	// Can't think of a use case where this isn't true, but we can always adjust if need be
-	img {
-		height: auto;
-		width: 100%;
-	}
-}
-
-// Hides the nav on phones and tablets, we will only show dots for these devices, no nav
-.bsp-carousel-nav {
-	display: none;
-}
-
-// For anything past a medium screen size, we want the thumbs
-@media only screen and (min-width: 992px) {
-
-	.bsp-carousel-stage.carousel-dots {
-		margin-bottom: 0;
-
-		.slick-dots {
-			display: none;
-		}
-	}
-
-	// overrides base slick specificity
-	.bsp-carousel-stage {
-		.slick-prev, .slick-next {
-			display: none !important;
-		}
-	}
-
-	.bsp-carousel-nav {
-
-		&.slick-initialized {
-			display: block;
-		}
 	}
 
 }
