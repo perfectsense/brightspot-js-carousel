@@ -167,37 +167,6 @@
 .bsp-carousel .slick-next {
   right: 15px;
 }
-.bsp-carousel-slide {
-  display: none;
-}
-.bsp-carousel-slide:first-of-type {
-  display: block;
-}
-.slick-initialized .bsp-carousel-slide {
-  display: block;
-}
-.bsp-carousel-slide img {
-  height: auto;
-  width: 100%;
-}
-.bsp-carousel-nav {
-  display: none;
-}
-@media only screen and (min-width: 992px) {
-  .bsp-carousel-stage.carousel-dots {
-    margin-bottom: 0;
-  }
-  .bsp-carousel-stage.carousel-dots .slick-dots {
-    display: none;
-  }
-  .bsp-carousel-stage .slick-prev,
-  .bsp-carousel-stage .slick-next {
-    display: none !important;
-  }
-  .bsp-carousel-nav.slick-initialized {
-    display: block;
-  }
-}
 /*
 This is a stock slick-theme.css from slick 1.4.1 except we switch in our custom font
 and change image paths to point to bower for inline compile by grunt-css-url-embed
@@ -290,9 +259,6 @@ in case we want to upgrade this later.
   content: "\f053";
 }
 /* Dots */
-.slick-slider {
-  margin-bottom: 30px;
-}
 .slick-dots {
   position: absolute;
   bottom: -45px;
