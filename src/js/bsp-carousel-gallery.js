@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import bsp_carousel from 'bsp-carousel-thumbnav';
+import bsp_carousel_thumbnav from 'bsp-carousel-thumbnav';
 import historyAPI from 'native.history';
 
 export default {
@@ -70,7 +70,7 @@ export default {
     buildCarousel() {
         var self = this;
 
-        self.carousel = Object.create(bsp_carousel);
+        self.carousel = Object.create(bsp_carousel_thumbnav);
 
         self.carousel.init(self.$carousel, self.options);
     },
@@ -105,7 +105,7 @@ export default {
             var currentAdjusted = self.carousel.stage.currentSlideAdjustedForInterstitials();
             var $current;
             var $interstitial;
-            self.$el.find('.bsp-gallery-fullscreen-interstitial').each((key, interstitial) => {
+            self.$el.find('.bsp-carousel-gallery-interstitial').each((key, interstitial) => {
                 var destroy = $(interstitial).data('destroy');
                 if (typeof destroy === 'function') {
                     destroy();
@@ -113,7 +113,7 @@ export default {
             });
             if (currentAdjusted == 'interstitial') {
                 $current = $(self.carousel.stage.$el[0].slick.$slides[currentSlide]);
-                $interstitial = $current.find('.bsp-gallery-fullscreen-interstitial');
+                $interstitial = $current.find('.bsp-carousel-gallery-interstitial');
                 var options = $interstitial.data().options;
                 self.createInterstitial($interstitial, JSON.parse(options));
             }
@@ -121,8 +121,9 @@ export default {
     },
 
     createInterstitial($el, options) {
-        var $counter = $el.find('.bsp-gallery-fullscreen-interstitial-counter');
-        var $content = $el.find('.bsp-gallery-fullscreen-interstitial-content');
+        var self = this;
+        var $counter = $el.find('.bsp-carousel-gallery-interstitial-counter');
+        var $content = $el.find('.bsp-carousel-gallery-interstitial-content');
         var stage = this.carousel.stage;
         var counterInterval;
         var resizeHandler = () => {
