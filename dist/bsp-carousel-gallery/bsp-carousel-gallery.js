@@ -18,6 +18,8 @@ export default {
         },
 
         stage: {
+            deepLinkId : 'slide-',
+            deepLinking : true,
             interstitials: true,
             interstitialClass: 'interstitial',
             themeConfig: {
@@ -31,18 +33,25 @@ export default {
         var self = this;
 
         self.$el = $el;
-        self.options = $.extend(self.defaults, options);
+        self.options = $.extend(true, self.defaults, options);
 
         self.saveElements();
         self.buildCarousel();
+
+        self.carousel.$stage[0].focus();
+
         self.addThumbCaptionClicks();
         self.addInterstitials();
 
-        // if we are dynamic we want to remove the thumbs, which includes the counter inside
-        if(self.options.dynamicSlideLoad) {
-            self.$el.find('.bsp-carousel-gallery-thumbs').remove();
+        // This is the default behavior for a full carousel that also has dynamic slides
+        // we want to manage the history so we replace the browser URL with the URL of the slide itself
+        // we also want to remove the thumbs, as it get unwieldly having a possible million thumbnails
+        // we can change this behavior to allow for more options or configurations if we need to later
+        if(self.options.stage.historyManagement) {
             self._manageHistory();
-        } else {
+        }
+
+        if(!self.options.stage.dynamicSlideLoad) {
             self.createCounter();
         }
     },
@@ -72,6 +81,11 @@ export default {
 
         self.carousel = Object.create(bsp_carousel_thumbnav);
 
+        // if there is no nav in the DOM, disable it to make sure not to cause JS errors
+        if(self.$el.find('.bsp-carousel-nav').length === 0) {
+            self.options.nav = 'disable';
+        }
+
         self.carousel.init(self.$carousel, self.options);
     },
 
@@ -79,14 +93,29 @@ export default {
         var self = this;
 
         self.$el.find('.bsp-carousel-gallery-thumbs').on('click', function() {
-            self.$el.removeClass('captions-visible');
+            self.$el.removeClass('overlay-visible');
             self.$el.toggleClass('thumbs-visible');
             return false;
         });
 
-        self.$el.find('.bsp-carousel-gallery-caption-trigger').on('click', function() {
+        self.$el.find('.bsp-carousel-gallery-overlay-trigger').on('click', function() {
+
+            // this code figures out how big the overlay has to be. Since we are trying to animate it, we need to
+            // animate max-height, so we need to set a max height value. We do not want some giant number, as that makes
+            // the animation janky, so we want to set the max height to the actual height of the content
+            var $currentSlide = self.carousel.$stage.find('.slick-active');
+            var $currentOverlay = $currentSlide.find('.bsp-carousel-gallery-slide-overlay-wrapper');
+            var currentOverlayHeight = $currentSlide.find('.bsp-carousel-gallery-slide-overlay-content').outerHeight();
+
+            if(self.$el.hasClass('overlay-visible')) {
+                $currentOverlay.css('max-height',0);
+            } else {
+                $currentOverlay.css('max-height',currentOverlayHeight);
+            }
+
+
             self.$el.removeClass('thumbs-visible');
-            self.$el.toggleClass('captions-visible');
+            self.$el.toggleClass('overlay-visible');
             return false;
         });
     },
@@ -94,6 +123,7 @@ export default {
     addInterstitials() {
         var self = this;
         var stage = self.carousel.stage;
+
         stage.bind('carousel:beforeChange', (e, carousel, currentSlide, nextSlide) => {
             if (stage.slideIsInterstitial(nextSlide)) {
                 self.$el.addClass('interstitial-showing');
@@ -112,8 +142,7 @@ export default {
                 }
             });
             if (currentAdjusted == 'interstitial') {
-                $current = $(self.carousel.stage.$el[0].slick.$slides[currentSlide]);
-                $interstitial = $current.find('.bsp-carousel-gallery-interstitial');
+                $interstitial = $(self.carousel.stage.$el[0].slick.$slides[currentSlide]);
                 var options = $interstitial.data().options;
                 self.createInterstitial($interstitial, JSON.parse(options));
             }
