@@ -93,6 +93,7 @@ export default {
         var self = this;
 
         self.$el.find('.bsp-carousel-gallery-thumbs').on('click', function() {
+            self.$el.removeClass('captions-visible');
             self.$el.removeClass('overlay-visible');
             self.$el.toggleClass('thumbs-visible');
             return false;
@@ -118,6 +119,14 @@ export default {
             self.$el.toggleClass('overlay-visible');
             return false;
         });
+
+        self.$el.find('.bsp-carousel-gallery-caption-trigger').on('click', function() {
+            self.$el.removeClass('thumbs-visible');
+            self.$el.toggleClass('captions-visible');
+            return false;
+        });
+
+
     },
 
     addInterstitials() {
