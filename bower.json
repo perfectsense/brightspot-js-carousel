@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "slick-carousel": "1.5.0",
-    "requirejs": "jrburke/requirejs#~2.1.16"
+    "requirejs": "jrburke/requirejs#~2.1.16",
+    "history.js"  : "1.8.0"
   },
   "homepage": "https://github.com/perfectsense/brightspot-js-carousel",
   "ignore": ["demo","Gruntfile.js","package.json",".gitignore"],
@@ -21,6 +22,7 @@
   ],
   "license": "MIT",
   "main": [
+    "dist/native.history.js",
     "dist/bsp-carousel/*.js",
     "dist/bsp-carousel/*.css",
     "dist/bsp-carousel-gallery/*.js",

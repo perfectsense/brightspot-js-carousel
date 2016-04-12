@@ -144,6 +144,12 @@ module.exports = function(grunt) {
 					{
 						'<%= distBspGalleryDir %>/<%= labelBspGallery %>-<%= labelPluginLabel %>.js':
 						'<%= srcJsDir %>/<%= labelBspGallery %>-<%= labelPluginLabel %>.js'
+					},
+					{
+						cwd: '<%= buildDir %>/js/history.js/scripts/bundled-uncompressed/html5',
+						expand: true,
+						src: ['native.history.js'],
+						dest: '<%= distDir %>/'
 					}
 				]
 			}
