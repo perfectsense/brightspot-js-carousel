@@ -10,7 +10,7 @@
     "bsp-utils": ">=1.0.0"
   },
   "devDependencies": {
-    "slick-carousel": "1.5.3",
+    "slick-carousel": "1.6.0",
     "requirejs": "jrburke/requirejs#~2.1.16",
     "history.js"  : "1.8.0"
   },
@@ -30,5 +30,5 @@
     "dist/bsp-carousel-thumbnav/*.js"
   ],
   "name": "bsp-carousel",
-  "version": "1.4.1"
+  "version": "1.5.0"
 }
